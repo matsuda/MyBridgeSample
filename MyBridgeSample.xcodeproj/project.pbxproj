@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,16 @@
 		0E4E8B192474A2B100A4B398 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E4E8B172474A2B100A4B398 /* LaunchScreen.storyboard */; };
 		0E4E8B242474A2B100A4B398 /* MyBridgeSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4E8B232474A2B100A4B398 /* MyBridgeSampleTests.swift */; };
 		0E4E8B2F2474A2B100A4B398 /* MyBridgeSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4E8B2E2474A2B100A4B398 /* MyBridgeSampleUITests.swift */; };
+		0E4E8B492474AEEB00A4B398 /* RxRelay.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B3E2474AEEA00A4B398 /* RxRelay.framework */; };
+		0E4E8B4B2474AEEB00A4B398 /* SVProgressHUD.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B3F2474AEEA00A4B398 /* SVProgressHUD.framework */; };
+		0E4E8B4D2474AEEB00A4B398 /* Nuke.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B402474AEEA00A4B398 /* Nuke.framework */; };
+		0E4E8B4F2474AEEB00A4B398 /* RxCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B412474AEEA00A4B398 /* RxCocoa.framework */; };
+		0E4E8B512474AEEB00A4B398 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B422474AEEA00A4B398 /* RealmSwift.framework */; };
+		0E4E8B532474AEEB00A4B398 /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B432474AEEA00A4B398 /* RxSwift.framework */; };
+		0E4E8B552474AEEB00A4B398 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B442474AEEA00A4B398 /* Realm.framework */; };
+		0E4E8B592474AEEB00A4B398 /* APIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B462474AEEA00A4B398 /* APIKit.framework */; };
+		0E4E8B5E2474B71900A4B398 /* RxBlocking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B3D2474AEEA00A4B398 /* RxBlocking.framework */; };
+		0E4E8B5F2474B71900A4B398 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B452474AEEA00A4B398 /* RxTest.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +59,16 @@
 		0E4E8B2A2474A2B100A4B398 /* MyBridgeSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyBridgeSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E4E8B2E2474A2B100A4B398 /* MyBridgeSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyBridgeSampleUITests.swift; sourceTree = "<group>"; };
 		0E4E8B302474A2B100A4B398 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0E4E8B3D2474AEEA00A4B398 /* RxBlocking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxBlocking.framework; path = Carthage/Build/iOS/RxBlocking.framework; sourceTree = "<group>"; };
+		0E4E8B3E2474AEEA00A4B398 /* RxRelay.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxRelay.framework; path = Carthage/Build/iOS/RxRelay.framework; sourceTree = "<group>"; };
+		0E4E8B3F2474AEEA00A4B398 /* SVProgressHUD.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SVProgressHUD.framework; path = Carthage/Build/iOS/SVProgressHUD.framework; sourceTree = "<group>"; };
+		0E4E8B402474AEEA00A4B398 /* Nuke.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nuke.framework; path = Carthage/Build/iOS/Nuke.framework; sourceTree = "<group>"; };
+		0E4E8B412474AEEA00A4B398 /* RxCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxCocoa.framework; path = Carthage/Build/iOS/RxCocoa.framework; sourceTree = "<group>"; };
+		0E4E8B422474AEEA00A4B398 /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		0E4E8B432474AEEA00A4B398 /* RxSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxSwift.framework; path = Carthage/Build/iOS/RxSwift.framework; sourceTree = "<group>"; };
+		0E4E8B442474AEEA00A4B398 /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		0E4E8B452474AEEA00A4B398 /* RxTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RxTest.framework; path = Carthage/Build/iOS/RxTest.framework; sourceTree = "<group>"; };
+		0E4E8B462474AEEA00A4B398 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +76,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E4E8B4B2474AEEB00A4B398 /* SVProgressHUD.framework in Frameworks */,
+				0E4E8B4D2474AEEB00A4B398 /* Nuke.framework in Frameworks */,
+				0E4E8B532474AEEB00A4B398 /* RxSwift.framework in Frameworks */,
+				0E4E8B512474AEEB00A4B398 /* RealmSwift.framework in Frameworks */,
+				0E4E8B552474AEEB00A4B398 /* Realm.framework in Frameworks */,
+				0E4E8B492474AEEB00A4B398 /* RxRelay.framework in Frameworks */,
+				0E4E8B4F2474AEEB00A4B398 /* RxCocoa.framework in Frameworks */,
+				0E4E8B592474AEEB00A4B398 /* APIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,6 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E4E8B5E2474B71900A4B398 /* RxBlocking.framework in Frameworks */,
+				0E4E8B5F2474B71900A4B398 /* RxTest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +113,7 @@
 				0E4E8B222474A2B100A4B398 /* MyBridgeSampleTests */,
 				0E4E8B2D2474A2B100A4B398 /* MyBridgeSampleUITests */,
 				0E4E8B0A2474A2B000A4B398 /* Products */,
+				0E4E8B3C2474AEEA00A4B398 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -128,6 +159,23 @@
 			path = MyBridgeSampleUITests;
 			sourceTree = "<group>";
 		};
+		0E4E8B3C2474AEEA00A4B398 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0E4E8B462474AEEA00A4B398 /* APIKit.framework */,
+				0E4E8B402474AEEA00A4B398 /* Nuke.framework */,
+				0E4E8B442474AEEA00A4B398 /* Realm.framework */,
+				0E4E8B422474AEEA00A4B398 /* RealmSwift.framework */,
+				0E4E8B3D2474AEEA00A4B398 /* RxBlocking.framework */,
+				0E4E8B412474AEEA00A4B398 /* RxCocoa.framework */,
+				0E4E8B3E2474AEEA00A4B398 /* RxRelay.framework */,
+				0E4E8B432474AEEA00A4B398 /* RxSwift.framework */,
+				0E4E8B452474AEEA00A4B398 /* RxTest.framework */,
+				0E4E8B3F2474AEEA00A4B398 /* SVProgressHUD.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -138,6 +186,7 @@
 				0E4E8B052474A2B000A4B398 /* Sources */,
 				0E4E8B062474A2B000A4B398 /* Frameworks */,
 				0E4E8B072474A2B000A4B398 /* Resources */,
+				0E4E8B5C2474AF7800A4B398 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -155,6 +204,7 @@
 				0E4E8B1B2474A2B100A4B398 /* Sources */,
 				0E4E8B1C2474A2B100A4B398 /* Frameworks */,
 				0E4E8B1D2474A2B100A4B398 /* Resources */,
+				0E4E8B5D2474B5ED00A4B398 /* Carthage */,
 			);
 			buildRules = (
 			);
@@ -253,6 +303,49 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0E4E8B5C2474AF7800A4B398 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"$(SRCROOT)/input.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = Carthage;
+			outputFileListPaths = (
+				"$(SRCROOT)/output.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		0E4E8B5D2474B5ED00A4B398 /* Carthage */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"$(SRCROOT)/inputTest.xcfilelist",
+			);
+			inputPaths = (
+			);
+			name = Carthage;
+			outputFileListPaths = (
+				"$(SRCROOT)/outputTest.xcfilelist",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0E4E8B052474A2B000A4B398 /* Sources */ = {
@@ -435,6 +528,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MyBridgeSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -453,6 +550,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MyBridgeSample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -472,6 +573,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MyBridgeSampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -493,6 +598,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = MyBridgeSampleTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.4;
 				LD_RUNPATH_SEARCH_PATHS = (

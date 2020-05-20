@@ -1,0 +1,5 @@
+github "ishkawa/APIKit" ~> 5.0
+github "kean/Nuke" ~> 8.0
+github "ReactiveX/RxSwift" ~> 5.0
+github "SVProgressHUD/SVProgressHUD"
+github "realm/realm-cocoa"

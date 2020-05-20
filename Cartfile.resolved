@@ -1,0 +1,5 @@
+github "ReactiveX/RxSwift" "5.1.1"
+github "SVProgressHUD/SVProgressHUD" "2.2.5"
+github "ishkawa/APIKit" "5.1.0"
+github "kean/Nuke" "8.4.1"
+github "realm/realm-cocoa" "v5.0.0"
