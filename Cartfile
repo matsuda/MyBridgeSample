@@ -3,3 +3,4 @@ github "kean/Nuke" ~> 8.0
 github "ReactiveX/RxSwift" ~> 5.0
 github "SVProgressHUD/SVProgressHUD"
 github "realm/realm-cocoa"
+github "matsuda/TabPageViewController" "feature/swift5"

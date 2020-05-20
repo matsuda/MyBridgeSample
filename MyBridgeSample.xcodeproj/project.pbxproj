@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E27BB772475949600840832 /* TabPageViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E27BB762475949600840832 /* TabPageViewController.framework */; };
 		0E4E8B0D2474A2B000A4B398 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4E8B0C2474A2B000A4B398 /* AppDelegate.swift */; };
 		0E4E8B0F2474A2B000A4B398 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4E8B0E2474A2B000A4B398 /* SceneDelegate.swift */; };
 		0E4E8B112474A2B000A4B398 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E4E8B102474A2B000A4B398 /* ViewController.swift */; };
@@ -45,6 +46,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0E27BB762475949600840832 /* TabPageViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TabPageViewController.framework; path = Carthage/Build/iOS/TabPageViewController.framework; sourceTree = "<group>"; };
 		0E4E8B092474A2B000A4B398 /* MyBridgeSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBridgeSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E4E8B0C2474A2B000A4B398 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0E4E8B0E2474A2B000A4B398 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +78,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E27BB772475949600840832 /* TabPageViewController.framework in Frameworks */,
 				0E4E8B4B2474AEEB00A4B398 /* SVProgressHUD.framework in Frameworks */,
 				0E4E8B4D2474AEEB00A4B398 /* Nuke.framework in Frameworks */,
 				0E4E8B532474AEEB00A4B398 /* RxSwift.framework in Frameworks */,
@@ -162,6 +165,7 @@
 		0E4E8B3C2474AEEA00A4B398 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				0E27BB762475949600840832 /* TabPageViewController.framework */,
 				0E4E8B462474AEEA00A4B398 /* APIKit.framework */,
 				0E4E8B402474AEEA00A4B398 /* Nuke.framework */,
 				0E4E8B442474AEEA00A4B398 /* Realm.framework */,
