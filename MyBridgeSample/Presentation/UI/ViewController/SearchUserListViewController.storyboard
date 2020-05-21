@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="14b-yW-4rv">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Search User List View Controller-->
+        <scene sceneID="5Bo-Fe-QON">
+            <objects>
+                <viewController id="14b-yW-4rv" customClass="SearchUserListViewController" customModule="MyBridgeSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HIx-l2-Bs6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="wOU-Ez-lQP">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="ZF9-4v-DED">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
+                                <connections>
+                                    <outlet property="dataSource" destination="14b-yW-4rv" id="fga-TH-Ey9"/>
+                                    <outlet property="delegate" destination="14b-yW-4rv" id="aqS-p6-aqi"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="MTu-bd-LDL" firstAttribute="bottom" secondItem="wOU-Ez-lQP" secondAttribute="bottom" id="1f8-Bc-xuy"/>
+                            <constraint firstItem="wOU-Ez-lQP" firstAttribute="top" secondItem="MTu-bd-LDL" secondAttribute="top" id="r1w-Jn-x0s"/>
+                            <constraint firstItem="wOU-Ez-lQP" firstAttribute="leading" secondItem="MTu-bd-LDL" secondAttribute="leading" id="twJ-J3-chI"/>
+                            <constraint firstItem="MTu-bd-LDL" firstAttribute="trailing" secondItem="wOU-Ez-lQP" secondAttribute="trailing" id="zRn-FY-dGy"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="MTu-bd-LDL"/>
+                    </view>
+                    <connections>
+                        <outlet property="searchBar" destination="ZF9-4v-DED" id="o9f-Za-T7x"/>
+                        <outlet property="tableView" destination="wOU-Ez-lQP" id="KZD-aa-oVg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A5C-wJ-3CG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="188" y="185"/>
+        </scene>
+    </scenes>
+</document>

@@ -26,6 +26,12 @@
 		0EB29E6E2476D95A000BF55B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E6C2476D95A000BF55B /* AppDelegate.swift */; };
 		0EB29E6F2476D95A000BF55B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E6D2476D95A000BF55B /* SceneDelegate.swift */; };
 		0EB29E742476DA14000BF55B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E732476DA14000BF55B /* ViewController.swift */; };
+		0EB29E762476DB0A000BF55B /* SearchUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E752476DB0A000BF55B /* SearchUserListViewController.swift */; };
+		0EB29E782476DB1C000BF55B /* SearchUserListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EB29E772476DB1C000BF55B /* SearchUserListViewController.storyboard */; };
+		0EB29E7B2476DDA1000BF55B /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EB29E7A2476DDA1000BF55B /* users.json */; };
+		0EB29E822476DFDD000BF55B /* GitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E812476DFDD000BF55B /* GitHubUser.swift */; };
+		0EB29E872476E117000BF55B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E862476E117000BF55B /* User.swift */; };
+		0EB29E8B2476E481000BF55B /* GitHubUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E8A2476E481000BF55B /* GitHubUserList.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -71,6 +77,12 @@
 		0EB29E6C2476D95A000BF55B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EB29E6D2476D95A000BF55B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0EB29E732476DA14000BF55B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0EB29E752476DB0A000BF55B /* SearchUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserListViewController.swift; sourceTree = "<group>"; };
+		0EB29E772476DB1C000BF55B /* SearchUserListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchUserListViewController.storyboard; sourceTree = "<group>"; };
+		0EB29E7A2476DDA1000BF55B /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
+		0EB29E812476DFDD000BF55B /* GitHubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUser.swift; sourceTree = "<group>"; };
+		0EB29E862476E117000BF55B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		0EB29E8A2476E481000BF55B /* GitHubUserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUserList.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +145,9 @@
 		0E4E8B0B2474A2B000A4B398 /* MyBridgeSample */ = {
 			isa = PBXGroup;
 			children = (
+				0EB29E792476DDA1000BF55B /* Resources */,
+				0EB29E7C2476DF8D000BF55B /* Data */,
+				0EB29E832476E0F9000BF55B /* Domain */,
 				0EB29E6A2476D7BC000BF55B /* Presentation */,
 				0E4E8B122474A2B000A4B398 /* Main.storyboard */,
 				0E4E8B152474A2B100A4B398 /* Assets.xcassets */,
@@ -200,8 +215,67 @@
 			isa = PBXGroup;
 			children = (
 				0EB29E732476DA14000BF55B /* ViewController.swift */,
+				0EB29E752476DB0A000BF55B /* SearchUserListViewController.swift */,
+				0EB29E772476DB1C000BF55B /* SearchUserListViewController.storyboard */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		0EB29E792476DDA1000BF55B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0EB29E7A2476DDA1000BF55B /* users.json */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		0EB29E7C2476DF8D000BF55B /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				0EB29E7D2476DF8D000BF55B /* Repository */,
+				0EB29E7E2476DF8D000BF55B /* Entity */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		0EB29E7D2476DF8D000BF55B /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		0EB29E7E2476DF8D000BF55B /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				0EB29E8A2476E481000BF55B /* GitHubUserList.swift */,
+				0EB29E812476DFDD000BF55B /* GitHubUser.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		0EB29E832476E0F9000BF55B /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				0EB29E842476E0F9000BF55B /* Model */,
+				0EB29E852476E0F9000BF55B /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		0EB29E842476E0F9000BF55B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				0EB29E862476E117000BF55B /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0EB29E852476E0F9000BF55B /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = UseCase;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -310,8 +384,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB29E7B2476DDA1000BF55B /* users.json in Resources */,
 				0E4E8B192474A2B100A4B398 /* LaunchScreen.storyboard in Resources */,
 				0E4E8B162474A2B100A4B398 /* Assets.xcassets in Resources */,
+				0EB29E782476DB1C000BF55B /* SearchUserListViewController.storyboard in Resources */,
 				0E4E8B142474A2B000A4B398 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -381,7 +457,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EB29E742476DA14000BF55B /* ViewController.swift in Sources */,
+				0EB29E762476DB0A000BF55B /* SearchUserListViewController.swift in Sources */,
+				0EB29E872476E117000BF55B /* User.swift in Sources */,
 				0EB29E6E2476D95A000BF55B /* AppDelegate.swift in Sources */,
+				0EB29E822476DFDD000BF55B /* GitHubUser.swift in Sources */,
+				0EB29E8B2476E481000BF55B /* GitHubUserList.swift in Sources */,
 				0EB29E6F2476D95A000BF55B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
