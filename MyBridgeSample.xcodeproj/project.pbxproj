@@ -32,6 +32,8 @@
 		0EB29E822476DFDD000BF55B /* GitHubUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E812476DFDD000BF55B /* GitHubUser.swift */; };
 		0EB29E872476E117000BF55B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E862476E117000BF55B /* User.swift */; };
 		0EB29E8B2476E481000BF55B /* GitHubUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E8A2476E481000BF55B /* GitHubUserList.swift */; };
+		0EB29E8E2476EF95000BF55B /* FavoriteUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E8D2476EF95000BF55B /* FavoriteUserListViewController.swift */; };
+		0EB29E902476EFA6000BF55B /* FavoriteUserListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EB29E8F2476EFA6000BF55B /* FavoriteUserListViewController.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +85,8 @@
 		0EB29E812476DFDD000BF55B /* GitHubUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUser.swift; sourceTree = "<group>"; };
 		0EB29E862476E117000BF55B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0EB29E8A2476E481000BF55B /* GitHubUserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUserList.swift; sourceTree = "<group>"; };
+		0EB29E8D2476EF95000BF55B /* FavoriteUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUserListViewController.swift; sourceTree = "<group>"; };
+		0EB29E8F2476EFA6000BF55B /* FavoriteUserListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteUserListViewController.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -217,6 +221,8 @@
 				0EB29E732476DA14000BF55B /* ViewController.swift */,
 				0EB29E752476DB0A000BF55B /* SearchUserListViewController.swift */,
 				0EB29E772476DB1C000BF55B /* SearchUserListViewController.storyboard */,
+				0EB29E8D2476EF95000BF55B /* FavoriteUserListViewController.swift */,
+				0EB29E8F2476EFA6000BF55B /* FavoriteUserListViewController.storyboard */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -388,6 +394,7 @@
 				0E4E8B192474A2B100A4B398 /* LaunchScreen.storyboard in Resources */,
 				0E4E8B162474A2B100A4B398 /* Assets.xcassets in Resources */,
 				0EB29E782476DB1C000BF55B /* SearchUserListViewController.storyboard in Resources */,
+				0EB29E902476EFA6000BF55B /* FavoriteUserListViewController.storyboard in Resources */,
 				0E4E8B142474A2B000A4B398 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -457,6 +464,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EB29E742476DA14000BF55B /* ViewController.swift in Sources */,
+				0EB29E8E2476EF95000BF55B /* FavoriteUserListViewController.swift in Sources */,
 				0EB29E762476DB0A000BF55B /* SearchUserListViewController.swift in Sources */,
 				0EB29E872476E117000BF55B /* User.swift in Sources */,
 				0EB29E6E2476D95A000BF55B /* AppDelegate.swift in Sources */,
