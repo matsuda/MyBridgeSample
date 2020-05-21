@@ -34,6 +34,7 @@
 		0EB29E8B2476E481000BF55B /* GitHubUserList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E8A2476E481000BF55B /* GitHubUserList.swift */; };
 		0EB29E8E2476EF95000BF55B /* FavoriteUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E8D2476EF95000BF55B /* FavoriteUserListViewController.swift */; };
 		0EB29E902476EFA6000BF55B /* FavoriteUserListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EB29E8F2476EFA6000BF55B /* FavoriteUserListViewController.storyboard */; };
+		0EB29E922476F39F000BF55B /* FavoriteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E912476F39F000BF55B /* FavoriteUser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +88,7 @@
 		0EB29E8A2476E481000BF55B /* GitHubUserList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubUserList.swift; sourceTree = "<group>"; };
 		0EB29E8D2476EF95000BF55B /* FavoriteUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUserListViewController.swift; sourceTree = "<group>"; };
 		0EB29E8F2476EFA6000BF55B /* FavoriteUserListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteUserListViewController.storyboard; sourceTree = "<group>"; };
+		0EB29E912476F39F000BF55B /* FavoriteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -256,6 +258,7 @@
 			children = (
 				0EB29E8A2476E481000BF55B /* GitHubUserList.swift */,
 				0EB29E812476DFDD000BF55B /* GitHubUser.swift */,
+				0EB29E912476F39F000BF55B /* FavoriteUser.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				0EB29E822476DFDD000BF55B /* GitHubUser.swift in Sources */,
 				0EB29E8B2476E481000BF55B /* GitHubUserList.swift in Sources */,
 				0EB29E6F2476D95A000BF55B /* SceneDelegate.swift in Sources */,
+				0EB29E922476F39F000BF55B /* FavoriteUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

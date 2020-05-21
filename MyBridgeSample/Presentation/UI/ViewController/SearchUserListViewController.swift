@@ -38,7 +38,9 @@ extension SearchUserListViewController {
         guard let userList = try? JSONDecoder().decode(GitHubUserList.self, from: data) else {
             return
         }
-        users = userList.users.map(User.init(gitHubUser:))
+        users = userList.users.map {
+            User(gitHubUser: $0)
+        }
     }
 }
 

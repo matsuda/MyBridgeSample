@@ -8,13 +8,23 @@
 
 import Foundation
 
-class User {
+struct User {
+    let id: Int
     let name: String
     let imageURL: String?
-    var isFav: Bool = false
+    var isFav: Bool
 
-    init(gitHubUser: GitHubUser) {
+    init(gitHubUser: GitHubUser, isFav: Bool = false) {
+        id = gitHubUser.id
         name = gitHubUser.login
         imageURL = gitHubUser.avatarUrl
+        self.isFav = isFav
+    }
+
+    init(favoriteUser: FavoriteUser) {
+        id = favoriteUser.userID
+        name = favoriteUser.name
+        imageURL = favoriteUser.imageURL
+        isFav = true
     }
 }
