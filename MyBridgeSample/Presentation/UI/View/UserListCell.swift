@@ -34,6 +34,7 @@ extension UserListCell {
     func configure(user: User) {
         nameLabel.text = user.name
         setFavoriteImage(isFavorite: user.isFavorite)
+        avatarIcon.loadImage(with: user.avatarUrl)
     }
 }
 
