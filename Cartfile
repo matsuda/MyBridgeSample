@@ -4,3 +4,4 @@ github "ReactiveX/RxSwift" ~> 5.0
 github "SVProgressHUD/SVProgressHUD"
 github "realm/realm-cocoa"
 github "matsuda/TabPageViewController" "feature/swift5"
+github "kylef-archive/WebLinking.swift" "master"

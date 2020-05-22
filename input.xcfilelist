@@ -7,3 +7,4 @@ $(SRCROOT)/Carthage/Build/iOS/RxRelay.framework
 $(SRCROOT)/Carthage/Build/iOS/RxSwift.framework
 $(SRCROOT)/Carthage/Build/iOS/SVProgressHUD.framework
 $(SRCROOT)/Carthage/Build/iOS/TabPageViewController.framework
+$(SRCROOT)/Carthage/Build/iOS/WebLinking.framework

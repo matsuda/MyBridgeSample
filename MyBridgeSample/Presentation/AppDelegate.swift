@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import API
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,6 +16,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        if let dict = Bundle.main.infoDictionary {
+            if let token = dict["GitHubAPIToken"] as? String {
+                print("GitHub API auth token: \(token)")
+                GitHubConfig.shared.token = token
+            }
+        }
+        if GitHubConfig.shared.token == nil {
+            print("======================================")
+            print("== GitHub API auth token is not set ==")
+            print("======================================")
+        }
+
+        #if DEBUG
+//        URLCache.shared.removeAllCachedResponses()
+        if let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
+            print("documentDirectory >>>>>", path)
+        }
+        #endif
         return true
     }
 
