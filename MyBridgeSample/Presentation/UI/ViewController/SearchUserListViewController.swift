@@ -29,6 +29,7 @@ final class SearchUserListViewController: UIViewController {
 
 extension SearchUserListViewController {
     private func prepareTableView() {
+        tableView.registerNib(UserListCell.self)
     }
 
     private func loadData() {
@@ -53,13 +54,10 @@ extension SearchUserListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
-        if cell == nil {
-            cell = UITableViewCell(style: .default, reuseIdentifier: "Cell")
-        }
+        let cell = tableView.dequeueReusableCell(UserListCell.self, for: indexPath)
         let user = users[indexPath.row]
-        cell?.textLabel?.text = user.name
-        return cell!
+        cell.configure(user: user)
+        return cell
     }
 }
 
@@ -67,4 +65,10 @@ extension SearchUserListViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension SearchUserListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var user = users[indexPath.row]
+        user.isFavorite.toggle()
+        users[indexPath.row] = user
+        tableView.reloadRows(at: [indexPath], with: .automatic)
+    }
 }

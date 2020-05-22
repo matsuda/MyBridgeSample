@@ -12,7 +12,7 @@ import RealmSwift
 class FavoriteUser: Object {
     dynamic var userID = 0
     dynamic var name = ""
-    dynamic var imageURL = ""
+    dynamic var avatarUrl = ""
 
     override static func indexedProperties() -> [String] {
         return ["userID", "name"]

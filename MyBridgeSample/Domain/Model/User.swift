@@ -11,20 +11,20 @@ import Foundation
 struct User {
     let id: Int
     let name: String
-    let imageURL: String?
-    var isFav: Bool
+    let avatarUrl: String?
+    var isFavorite: Bool
 
-    init(gitHubUser: GitHubUser, isFav: Bool = false) {
+    init(gitHubUser: GitHubUser, isFavorite: Bool = false) {
         id = gitHubUser.id
         name = gitHubUser.login
-        imageURL = gitHubUser.avatarUrl
-        self.isFav = isFav
+        avatarUrl = gitHubUser.avatarUrl
+        self.isFavorite = isFavorite
     }
 
     init(favoriteUser: FavoriteUser) {
         id = favoriteUser.userID
         name = favoriteUser.name
-        imageURL = favoriteUser.imageURL
-        isFav = true
+        avatarUrl = favoriteUser.avatarUrl
+        isFavorite = true
     }
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Library
 
 class ViewController: UIViewController {
 
@@ -21,8 +22,7 @@ class ViewController: UIViewController {
 
 extension ViewController {
     private func loadSearchUserList() {
-        let ident = String(describing: SearchUserListViewController.self)
-        let vc = UIStoryboard(name: ident, bundle: nil).instantiateInitialViewController()!
+        let vc = SearchUserListViewController.make()
         addChild(vc)
         view.addSubview(vc.view)
         vc.view.translatesAutoresizingMaskIntoConstraints = false
@@ -34,8 +34,7 @@ extension ViewController {
     }
 
     private func loadFavoriteUserList() {
-        let ident = String(describing: FavoriteUserListViewController.self)
-        let vc = UIStoryboard(name: ident, bundle: nil).instantiateInitialViewController()!
+        let vc = FavoriteUserListViewController.make()
         addChild(vc)
         view.addSubview(vc.view)
         vc.view.translatesAutoresizingMaskIntoConstraints = false

@@ -16,6 +16,8 @@
 		0E078A5A2477FEDF0000D172 /* URLResource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078A592477FEDF0000D172 /* URLResource.swift */; };
 		0E078A5D2477FF390000D172 /* UITableView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078A5C2477FF390000D172 /* UITableView+Extensions.swift */; };
 		0E078A5F2477FF6A0000D172 /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078A5E2477FF6A0000D172 /* UIViewController+Extensions.swift */; };
+		0E078A632478008C0000D172 /* UserListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E078A612478008C0000D172 /* UserListCell.swift */; };
+		0E078A642478008C0000D172 /* UserListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E078A622478008C0000D172 /* UserListCell.xib */; };
 		0E27BB772475949600840832 /* TabPageViewController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E27BB762475949600840832 /* TabPageViewController.framework */; };
 		0E4E8B142474A2B000A4B398 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E4E8B122474A2B000A4B398 /* Main.storyboard */; };
 		0E4E8B162474A2B100A4B398 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E4E8B152474A2B100A4B398 /* Assets.xcassets */; };
@@ -109,6 +111,8 @@
 		0E078A592477FEDF0000D172 /* URLResource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLResource.swift; sourceTree = "<group>"; };
 		0E078A5C2477FF390000D172 /* UITableView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Extensions.swift"; sourceTree = "<group>"; };
 		0E078A5E2477FF6A0000D172 /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
+		0E078A612478008C0000D172 /* UserListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListCell.swift; sourceTree = "<group>"; };
+		0E078A622478008C0000D172 /* UserListCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserListCell.xib; sourceTree = "<group>"; };
 		0E27BB762475949600840832 /* TabPageViewController.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = TabPageViewController.framework; path = Carthage/Build/iOS/TabPageViewController.framework; sourceTree = "<group>"; };
 		0E4E8B092474A2B000A4B398 /* MyBridgeSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyBridgeSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0E4E8B132474A2B000A4B398 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -227,6 +231,15 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		0E078A602478006B0000D172 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E078A612478008C0000D172 /* UserListCell.swift */,
+				0E078A622478008C0000D172 /* UserListCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0E4E8B002474A2B000A4B398 = {
 			isa = PBXGroup;
 			children = (
@@ -316,6 +329,7 @@
 		0EB29E6B2476D7BC000BF55B /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				0E078A602478006B0000D172 /* View */,
 				0EB29E722476D9F0000BF55B /* ViewController */,
 			);
 			path = UI;
@@ -572,6 +586,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EB29E7B2476DDA1000BF55B /* users.json in Resources */,
+				0E078A642478008C0000D172 /* UserListCell.xib in Resources */,
 				0E4E8B192474A2B100A4B398 /* LaunchScreen.storyboard in Resources */,
 				0E4E8B162474A2B100A4B398 /* Assets.xcassets in Resources */,
 				0EB29E782476DB1C000BF55B /* SearchUserListViewController.storyboard in Resources */,
@@ -663,6 +678,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E078A632478008C0000D172 /* UserListCell.swift in Sources */,
 				0EB29E742476DA14000BF55B /* ViewController.swift in Sources */,
 				0EB29E8E2476EF95000BF55B /* FavoriteUserListViewController.swift in Sources */,
 				0EB29E762476DB0A000BF55B /* SearchUserListViewController.swift in Sources */,
