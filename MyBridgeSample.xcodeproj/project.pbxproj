@@ -481,6 +481,7 @@
 			buildPhases = (
 				0E4E8B052474A2B000A4B398 /* Sources */,
 				0E4E8B062474A2B000A4B398 /* Frameworks */,
+				0EF6A1BD2478390E0079A44F /* ShellScript */,
 				0E4E8B072474A2B000A4B398 /* Resources */,
 				0E4E8B5C2474AF7800A4B398 /* Carthage */,
 				0E078A4F2477FE230000D172 /* Embed Frameworks */,
@@ -670,6 +671,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+		0EF6A1BD2478390E0079A44F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${TEMP_DIR}/Preprocessed-Info.plist",
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "${SRCROOT}/scripts/set_github_api_token.sh\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -997,6 +1016,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = MyBridgeSample/Info.plist;
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1020,6 +1040,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = MyBridgeSample/Info.plist;
+				INFOPLIST_PREPROCESS = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
