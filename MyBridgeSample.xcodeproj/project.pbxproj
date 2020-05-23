@@ -67,6 +67,8 @@
 		0EE92AE42478F42E0046558F /* SearchUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE92AE32478F42E0046558F /* SearchUserRequest.swift */; };
 		0EFF78D4247900AC00BE7661 /* RxSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78D3247900AC00BE7661 /* RxSwift+Extensions.swift */; };
 		0EFF78D72479021A00BE7661 /* SearchUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78D62479021A00BE7661 /* SearchUserViewModel.swift */; };
+		0EFF78E2247921CD00BE7661 /* UserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78E1247921CD00BE7661 /* UserRealm.swift */; };
+		0EFF78E42479229B00BE7661 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78E32479229B00BE7661 /* RealmManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +212,8 @@
 		0EE92AE32478F42E0046558F /* SearchUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserRequest.swift; sourceTree = "<group>"; };
 		0EFF78D3247900AC00BE7661 /* RxSwift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extensions.swift"; sourceTree = "<group>"; };
 		0EFF78D62479021A00BE7661 /* SearchUserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserViewModel.swift; sourceTree = "<group>"; };
+		0EFF78E1247921CD00BE7661 /* UserRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealm.swift; sourceTree = "<group>"; };
+		0EFF78E32479229B00BE7661 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -414,6 +418,7 @@
 			isa = PBXGroup;
 			children = (
 				0EB29E792476DDA1000BF55B /* Resources */,
+				0EFF78DF2479219600BE7661 /* Driver */,
 				0EB29E7C2476DF8D000BF55B /* Data */,
 				0EB29E832476E0F9000BF55B /* Domain */,
 				0EB29E6A2476D7BC000BF55B /* Presentation */,
@@ -561,6 +566,23 @@
 				0EFF78D62479021A00BE7661 /* SearchUserViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		0EFF78DF2479219600BE7661 /* Driver */ = {
+			isa = PBXGroup;
+			children = (
+				0EFF78E0247921B300BE7661 /* Realm */,
+			);
+			path = Driver;
+			sourceTree = "<group>";
+		};
+		0EFF78E0247921B300BE7661 /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				0EFF78E1247921CD00BE7661 /* UserRealm.swift */,
+				0EFF78E32479229B00BE7661 /* RealmManager.swift */,
+			);
+			path = Realm;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -958,9 +980,11 @@
 				0EFF78D4247900AC00BE7661 /* RxSwift+Extensions.swift in Sources */,
 				0EB29E872476E117000BF55B /* User.swift in Sources */,
 				0EB29E6E2476D95A000BF55B /* AppDelegate.swift in Sources */,
+				0EFF78E2247921CD00BE7661 /* UserRealm.swift in Sources */,
 				0EB29E822476DFDD000BF55B /* GitHubUser.swift in Sources */,
 				0EB29E8B2476E481000BF55B /* GitHubUserList.swift in Sources */,
 				0EE92AE02478F2FF0046558F /* SearchUserRepository.swift in Sources */,
+				0EFF78E42479229B00BE7661 /* RealmManager.swift in Sources */,
 				0EB29E6F2476D95A000BF55B /* SceneDelegate.swift in Sources */,
 				0EB29E922476F39F000BF55B /* FavoriteUser.swift in Sources */,
 			);
