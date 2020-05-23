@@ -67,8 +67,11 @@
 		0EE92AE42478F42E0046558F /* SearchUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE92AE32478F42E0046558F /* SearchUserRequest.swift */; };
 		0EFF78D4247900AC00BE7661 /* RxSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78D3247900AC00BE7661 /* RxSwift+Extensions.swift */; };
 		0EFF78D72479021A00BE7661 /* SearchUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78D62479021A00BE7661 /* SearchUserListViewModel.swift */; };
+		0EFF78DB24791B7800BE7661 /* FavoriteUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78DA24791B7800BE7661 /* FavoriteUserUseCase.swift */; };
+		0EFF78DD24791DFB00BE7661 /* FavoriteUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78DC24791DFB00BE7661 /* FavoriteUserRepository.swift */; };
 		0EFF78E2247921CD00BE7661 /* UserRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78E1247921CD00BE7661 /* UserRealm.swift */; };
 		0EFF78E42479229B00BE7661 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78E32479229B00BE7661 /* RealmManager.swift */; };
+		0EFF78E624794FA200BE7661 /* FavoriteUserListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78E524794FA200BE7661 /* FavoriteUserListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -212,8 +215,11 @@
 		0EE92AE32478F42E0046558F /* SearchUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserRequest.swift; sourceTree = "<group>"; };
 		0EFF78D3247900AC00BE7661 /* RxSwift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extensions.swift"; sourceTree = "<group>"; };
 		0EFF78D62479021A00BE7661 /* SearchUserListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchUserListViewModel.swift; sourceTree = "<group>"; };
+		0EFF78DA24791B7800BE7661 /* FavoriteUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUserUseCase.swift; sourceTree = "<group>"; };
+		0EFF78DC24791DFB00BE7661 /* FavoriteUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUserRepository.swift; sourceTree = "<group>"; };
 		0EFF78E1247921CD00BE7661 /* UserRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRealm.swift; sourceTree = "<group>"; };
 		0EFF78E32479229B00BE7661 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		0EFF78E524794FA200BE7661 /* FavoriteUserListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUserListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -521,6 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				0EE92ADF2478F2FF0046558F /* SearchUserRepository.swift */,
+				0EFF78DC24791DFB00BE7661 /* FavoriteUserRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -556,6 +563,7 @@
 			isa = PBXGroup;
 			children = (
 				0EE92ADD2478F2710046558F /* SearchUserUseCase.swift */,
+				0EFF78DA24791B7800BE7661 /* FavoriteUserUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -564,6 +572,7 @@
 			isa = PBXGroup;
 			children = (
 				0EFF78D62479021A00BE7661 /* SearchUserListViewModel.swift */,
+				0EFF78E524794FA200BE7661 /* FavoriteUserListViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -971,8 +980,10 @@
 			files = (
 				0E078A632478008C0000D172 /* UserListCell.swift in Sources */,
 				0EB29E742476DA14000BF55B /* ViewController.swift in Sources */,
+				0EFF78DD24791DFB00BE7661 /* FavoriteUserRepository.swift in Sources */,
 				0E078A6824782C820000D172 /* UIImageView+Extensions.swift in Sources */,
 				0EB29E8E2476EF95000BF55B /* FavoriteUserListViewController.swift in Sources */,
+				0EFF78DB24791B7800BE7661 /* FavoriteUserUseCase.swift in Sources */,
 				0EE92ADE2478F2710046558F /* SearchUserUseCase.swift in Sources */,
 				0EFF78D72479021A00BE7661 /* SearchUserListViewModel.swift in Sources */,
 				0EE92AE22478F3830046558F /* APIKit+Extensions.swift in Sources */,
@@ -986,6 +997,7 @@
 				0EE92AE02478F2FF0046558F /* SearchUserRepository.swift in Sources */,
 				0EFF78E42479229B00BE7661 /* RealmManager.swift in Sources */,
 				0EB29E6F2476D95A000BF55B /* SceneDelegate.swift in Sources */,
+				0EFF78E624794FA200BE7661 /* FavoriteUserListViewModel.swift in Sources */,
 				0EB29E922476F39F000BF55B /* FavoriteUser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

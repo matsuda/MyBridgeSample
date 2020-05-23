@@ -30,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         #if DEBUG
 //        URLCache.shared.removeAllCachedResponses()
+//        RealmManager.cleanUserRealm()
         if let path = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first {
             print("documentDirectory >>>>>", path)
         }

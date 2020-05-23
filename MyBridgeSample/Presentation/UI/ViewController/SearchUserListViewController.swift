@@ -9,6 +9,8 @@
 import UIKit
 import RxSwift
 import RxCocoa
+import RealmSwift
+import APIKit
 
 final class SearchUserListViewController: UIViewController {
 
@@ -38,11 +40,18 @@ extension SearchUserListViewController {
     }
 
     private func createViewModel() -> SearchUserListViewModel {
-        let viewModel = SearchUserListViewModel(
+        let realm = try! userRealm()
+        let repository = SearchUserRepositoryImpl(session: .shared)
+        let favoriteRepository = FavoriteUserRepositoryImpl(realm: realm)
+        let usecase = SearchUserUseCaseImpl(
+            repository: repository,
+            favoriteUserRepository: favoriteRepository
+        )
+        let dependency = SearchUserListViewModel.Dependency(searchUserUseCase: usecase)
+        return SearchUserListViewModel(
             didChangeKeyword: searchBar.rx.text.orEmpty.asDriver(),
-            dependency: .init(searchUserUseCase: SearchUserUseCaseImpl.build()))
-
-        return viewModel
+            dependency: dependency
+        )
     }
 
     private func setupObservable() {
@@ -88,9 +97,7 @@ extension SearchUserListViewController: UITableViewDataSource {
 
 extension SearchUserListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var user = users[indexPath.row]
-        user.isFavorite.toggle()
-        users[indexPath.row] = user
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        let user = users[indexPath.row]
+        viewModel.like(user: user)
     }
 }

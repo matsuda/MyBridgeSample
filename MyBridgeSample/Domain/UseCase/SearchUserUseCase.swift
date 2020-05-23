@@ -15,6 +15,7 @@ import RxSwift
 
 protocol SearchUserUseCase {
     func search(keyword: String, page: Int?) -> Single<[User]>
+    func like(user: User)
 }
 
 
@@ -27,26 +28,31 @@ protocol SearchUserRepository {
 
 final class SearchUserUseCaseImpl: SearchUserUseCase {
     private let repository: SearchUserRepository
+    private let favoriteUserRepository: FavoriteUserRepository
 
-    init(repository: SearchUserRepository) {
+    init(repository: SearchUserRepository,
+         favoriteUserRepository: FavoriteUserRepository) {
         self.repository = repository
+        self.favoriteUserRepository = favoriteUserRepository
     }
 
     func search(keyword: String, page: Int? = nil) -> Single<[User]> {
         repository
             .search(keyword: keyword, page: page)
-            .map({ gitHubUsers in
-                gitHubUsers.map({ gitHubUser in
-                    User(gitHubUser: gitHubUser)
+            .map({ users in
+                users.map({ user in
+                    let isLike = self.favoriteUserRepository.fetchBy(id: user.id) != nil
+                    return User(gitHubUser: user, isFavorite: isLike)
                 })
             })
     }
-}
 
-
-extension SearchUserUseCaseImpl {
-    static func build() -> SearchUserUseCase {
-        let repository = SearchUserRepositoryImpl(session: .shared)
-        return SearchUserUseCaseImpl(repository: repository)
+    func like(user: User) {
+        let current = user.isFavorite
+        if current {
+            favoriteUserRepository.remove(id: user.id)
+        } else {
+            favoriteUserRepository.add(user: user)
+        }
     }
 }

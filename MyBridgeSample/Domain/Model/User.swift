@@ -22,7 +22,7 @@ struct User {
     }
 
     init(favoriteUser: FavoriteUser) {
-        id = favoriteUser.userID
+        id = favoriteUser.id
         name = favoriteUser.name
         avatarUrl = favoriteUser.avatarUrl
         isFavorite = true

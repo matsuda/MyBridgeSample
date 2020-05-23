@@ -9,12 +9,47 @@
 import Foundation
 import RealmSwift
 
-class FavoriteUser: Object {
-    dynamic var userID = 0
-    dynamic var name = ""
-    dynamic var avatarUrl = ""
+final class FavoriteUser: Object {
+    @objc dynamic var id = 0
+    @objc dynamic var name = ""
+    @objc dynamic var avatarUrl: String? = nil
+    @objc dynamic var timestamp: Date = Date()
 
     override static func indexedProperties() -> [String] {
-        return ["userID", "name"]
+        return ["id", "name"]
+    }
+}
+
+
+// MARK: - Realm
+
+extension Results where Element: FavoriteUser {
+    func orderd() -> Results<Element> {
+        return sorted(byKeyPath: "timestamp", ascending: false)
+    }
+}
+
+
+// MARK: - Finder
+
+extension FavoriteUser {
+    static func findAll(_ realm: Realm) -> Results<FavoriteUser> {
+        return realm.objects(self).orderd()
+    }
+
+    static func find(_ realm: Realm, id: Int) -> FavoriteUser? {
+        let predicate = NSPredicate(format: "id == %ld", id)
+        return find(realm, condition: predicate).first
+    }
+
+    static func find(_ realm: Realm, condition predicate: NSPredicate) -> Results<FavoriteUser> {
+        return realm.objects(self).filter(predicate).orderd()
+    }
+
+    static func delete(_ realm: Realm, id: Int) throws {
+        let obj = realm.objects(self).filter("id == %ld", id)
+        try realm.write {
+            realm.delete(obj)
+        }
     }
 }

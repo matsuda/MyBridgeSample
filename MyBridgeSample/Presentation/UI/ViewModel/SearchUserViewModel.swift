@@ -1,5 +1,5 @@
 //
-//  SearchUserListViewModel.swift
+//  SearchUserViewModel.swift
 //  MyBridgeSample
 //
 //  Created by Kosuke Matsuda on 2020/05/23.
@@ -34,12 +34,5 @@ final class SearchUserListViewModel {
                     .startWith([])
                     .asDriver(onErrorJustReturn: [])
         }
-    }
-}
-
-
-extension SearchUserListViewModel {
-    func like(user: User) {
-        searchUserUseCase.like(user: user)
     }
 }
