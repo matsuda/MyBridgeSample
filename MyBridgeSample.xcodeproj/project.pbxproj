@@ -61,7 +61,9 @@
 		0EB29E902476EFA6000BF55B /* FavoriteUserListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EB29E8F2476EFA6000BF55B /* FavoriteUserListViewController.storyboard */; };
 		0EB29E922476F39F000BF55B /* FavoriteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E912476F39F000BF55B /* FavoriteUser.swift */; };
 		0EE92ADC2478F08D0046558F /* PaginationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE92ADB2478F08D0046558F /* PaginationResponse.swift */; };
+		0EE92AE22478F3830046558F /* APIKit+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE92AE12478F3830046558F /* APIKit+Extensions.swift */; };
 		0EE92AE42478F42E0046558F /* SearchUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE92AE32478F42E0046558F /* SearchUserRequest.swift */; };
+		0EFF78D4247900AC00BE7661 /* RxSwift+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EFF78D3247900AC00BE7661 /* RxSwift+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -199,7 +201,9 @@
 		0EB29E8F2476EFA6000BF55B /* FavoriteUserListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteUserListViewController.storyboard; sourceTree = "<group>"; };
 		0EB29E912476F39F000BF55B /* FavoriteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUser.swift; sourceTree = "<group>"; };
 		0EE92ADB2478F08D0046558F /* PaginationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationResponse.swift; sourceTree = "<group>"; };
+		0EE92AE12478F3830046558F /* APIKit+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APIKit+Extensions.swift"; sourceTree = "<group>"; };
 		0EE92AE32478F42E0046558F /* SearchUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserRequest.swift; sourceTree = "<group>"; };
+		0EFF78D3247900AC00BE7661 /* RxSwift+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RxSwift+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -324,6 +328,8 @@
 			isa = PBXGroup;
 			children = (
 				0E078A6724782C820000D172 /* UIImageView+Extensions.swift */,
+				0EE92AE12478F3830046558F /* APIKit+Extensions.swift */,
+				0EFF78D3247900AC00BE7661 /* RxSwift+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -928,7 +934,9 @@
 				0EB29E742476DA14000BF55B /* ViewController.swift in Sources */,
 				0E078A6824782C820000D172 /* UIImageView+Extensions.swift in Sources */,
 				0EB29E8E2476EF95000BF55B /* FavoriteUserListViewController.swift in Sources */,
+				0EE92AE22478F3830046558F /* APIKit+Extensions.swift in Sources */,
 				0EB29E762476DB0A000BF55B /* SearchUserListViewController.swift in Sources */,
+				0EFF78D4247900AC00BE7661 /* RxSwift+Extensions.swift in Sources */,
 				0EB29E872476E117000BF55B /* User.swift in Sources */,
 				0EB29E6E2476D95A000BF55B /* AppDelegate.swift in Sources */,
 				0EB29E822476DFDD000BF55B /* GitHubUser.swift in Sources */,
