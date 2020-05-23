@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
 
 final class SearchUserListViewController: UIViewController {
 
@@ -14,13 +16,16 @@ final class SearchUserListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
 
-    var users: [User] = []
+    private lazy var viewModel: SearchUserViewModel = createViewModel()
+    private var users: [User] = []
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         prepareTableView()
-        loadData()
+        setupObservable()
+//        loadData()
     }
 }
 
@@ -30,6 +35,23 @@ final class SearchUserListViewController: UIViewController {
 extension SearchUserListViewController {
     private func prepareTableView() {
         tableView.registerNib(UserListCell.self)
+    }
+
+    private func createViewModel() -> SearchUserViewModel {
+        let viewModel = SearchUserViewModel(
+            didChangeKeyword: searchBar.rx.text.orEmpty.asDriver(),
+            dependency: .init(searchUserUseCase: SearchUserUseCaseImpl.build()))
+
+        return viewModel
+    }
+
+    private func setupObservable() {
+        viewModel.users
+            .drive(onNext: { [weak self] (users) in
+                self?.users = users
+                self?.tableView.reloadData()
+            })
+            .disposed(by: disposeBag)
     }
 
     private func loadData() {

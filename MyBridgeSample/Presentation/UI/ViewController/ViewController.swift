@@ -15,8 +15,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
 
         title = "GitHub Stars"
-//        loadSearchUserList()
-        loadFavoriteUserList()
+        loadSearchUserList()
+//        loadFavoriteUserList()
     }
 }
 
