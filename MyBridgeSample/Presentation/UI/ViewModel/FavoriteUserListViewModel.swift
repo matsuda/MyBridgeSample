@@ -18,24 +18,19 @@ final class FavoriteUserListViewModel {
         case error(Error)
     }
 
-    struct Dependency {
-        let favoriteUserUseCase: FavoriteUserUseCase
-    }
-
     var updateState: Observable<UpdateState> {
         _updateState.asObservable()
     }
     private let _updateState: PublishRelay<UpdateState> = .init()
-    private let favoriteUserUseCase: FavoriteUserUseCase
+    private let useCase: FavoriteUserUseCase
 //    var users: Driver<[User]>
 //    private let results: Results<FavoriteUser>
     private var notificationToken: NotificationToken?
     var users: [User] = []
 
     init(realm: Realm,
-         dependency: Dependency) {
-        let favoriteUserUseCase = dependency.favoriteUserUseCase
-        self.favoriteUserUseCase = favoriteUserUseCase
+         useCase: FavoriteUserUseCase) {
+        self.useCase = useCase
 
         let results = realm.objects(FavoriteUser.self).orderd()
 
@@ -66,6 +61,6 @@ final class FavoriteUserListViewModel {
 extension FavoriteUserListViewModel {
     func like(at indexPath: IndexPath) {
         let user = users[indexPath.row]
-        favoriteUserUseCase.remove(id: user.id)
+        useCase.remove(id: user.id)
     }
 }

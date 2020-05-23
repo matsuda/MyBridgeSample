@@ -24,7 +24,6 @@ final class FavoriteUserListViewController: UIViewController {
 
         prepareTableView()
         setupObservable()
-//        loadData()
     }
 }
 
@@ -39,10 +38,10 @@ extension FavoriteUserListViewController {
     private func createViewModel() -> FavoriteUserListViewModel {
         let realm = try! userRealm()
         let repository = FavoriteUserRepositoryImpl(realm: realm)
-        let usecase = FavoriteUserUseCaseImpl(repository: repository)
+        let useCase = FavoriteUserUseCaseImpl(repository: repository)
         return FavoriteUserListViewModel(
             realm: realm,
-            dependency: FavoriteUserListViewModel.Dependency(favoriteUserUseCase: usecase)
+            useCase: useCase
         )
     }
 
@@ -67,18 +66,6 @@ extension FavoriteUserListViewController {
                 }
             })
         .disposed(by: disposeBag)
-    }
-
-    private func loadData() {
-        guard let path = Bundle.main.path(forResource: "users", ofType: "json") else { return }
-        let url = URL(fileURLWithPath: path)
-        guard let data = try? Data(contentsOf: url) else { return }
-        guard let userList = try? JSONDecoder().decode(GitHubUserList.self, from: data) else {
-            return
-        }
-        users = userList.users.map {
-            User(gitHubUser: $0)
-        }
     }
 }
 

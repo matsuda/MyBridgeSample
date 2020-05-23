@@ -11,24 +11,20 @@ import RxSwift
 import RxCocoa
 
 final class SearchUserListViewModel {
-    struct Dependency {
-        let searchUserUseCase: SearchUserUseCase
-    }
-
-    private let searchUserUseCase: SearchUserUseCase
     var users: Driver<[User]>
 
-    init(didChangeKeyword: Driver<String>,
-         dependency: Dependency) {
+    private let useCase: SearchUserUseCase
 
-        let searchUserUseCase = dependency.searchUserUseCase
-        self.searchUserUseCase = searchUserUseCase
+    init(didChangeKeyword: Driver<String>,
+         useCase: SearchUserUseCase) {
+
+        self.useCase = useCase
 
         self.users = didChangeKeyword.skip(1)
             .debounce(.microseconds(300))
             .distinctUntilChanged()
             .flatMapLatest { keyword in
-                searchUserUseCase
+                useCase
                     .search(keyword: keyword, page: nil)
                     .asObservable()
                     .startWith([])
@@ -40,6 +36,6 @@ final class SearchUserListViewModel {
 
 extension SearchUserListViewModel {
     func like(user: User) {
-        searchUserUseCase.like(user: user)
+        useCase.like(user: user)
     }
 }

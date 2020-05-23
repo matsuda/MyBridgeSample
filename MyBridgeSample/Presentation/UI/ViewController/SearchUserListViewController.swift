@@ -43,14 +43,13 @@ extension SearchUserListViewController {
         let realm = try! userRealm()
         let repository = SearchUserRepositoryImpl(session: .shared)
         let favoriteRepository = FavoriteUserRepositoryImpl(realm: realm)
-        let usecase = SearchUserUseCaseImpl(
+        let useCase = SearchUserUseCaseImpl(
             repository: repository,
             favoriteUserRepository: favoriteRepository
         )
-        let dependency = SearchUserListViewModel.Dependency(searchUserUseCase: usecase)
         return SearchUserListViewModel(
             didChangeKeyword: searchBar.rx.text.orEmpty.asDriver(),
-            dependency: dependency
+            useCase: useCase
         )
     }
 
@@ -61,18 +60,6 @@ extension SearchUserListViewController {
                 self?.tableView.reloadData()
             })
             .disposed(by: disposeBag)
-    }
-
-    private func loadData() {
-        guard let path = Bundle.main.path(forResource: "users", ofType: "json") else { return }
-        let url = URL(fileURLWithPath: path)
-        guard let data = try? Data(contentsOf: url) else { return }
-        guard let userList = try? JSONDecoder().decode(GitHubUserList.self, from: data) else {
-            return
-        }
-        users = userList.users.map {
-            User(gitHubUser: $0)
-        }
     }
 }
 
@@ -101,3 +88,22 @@ extension SearchUserListViewController: UITableViewDelegate {
         viewModel.like(user: user)
     }
 }
+
+
+// MARK: - for dev
+
+#if DEBUG
+extension SearchUserListViewController {
+    private func loadData() {
+        guard let path = Bundle.main.path(forResource: "users", ofType: "json") else { return }
+        let url = URL(fileURLWithPath: path)
+        guard let data = try? Data(contentsOf: url) else { return }
+        guard let userList = try? JSONDecoder().decode(GitHubUserList.self, from: data) else {
+            return
+        }
+        users = userList.users.map {
+            User(gitHubUser: $0)
+        }
+    }
+}
+#endif
