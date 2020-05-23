@@ -11,8 +11,8 @@ import Foundation
 public protocol PaginationResponse {
     associatedtype Element: Decodable
 
-    var elements: Element { get }
+    var element: Element { get }
     var nextPage: Int? { get }
 
-    init(elements: Element, nextPage: Int?)
+    init(element: Element, nextPage: Int?)
 }

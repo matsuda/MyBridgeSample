@@ -11,7 +11,7 @@ import Foundation
 // MARK: - UserListRequest
 
 public struct SearchUserRequest: GitHubRequest, PaginationRequest {
-    public typealias Response = SearchUserResponse<[User]>
+    public typealias Response = SearchUserResponse<SearchUserList>
 
     public var path: String = "/search/users"
 

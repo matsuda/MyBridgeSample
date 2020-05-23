@@ -23,14 +23,25 @@ public struct User: Decodable {
 }
 
 
+// MARK: - SearchUserList
+
+public struct SearchUserList: Decodable {
+    public let users: [User]
+
+    enum CodingKeys: String, CodingKey {
+        case users = "items"
+    }
+}
+
+
 // MARK: - SearchUserResponse
 
 public struct SearchUserResponse<Element: Decodable>: PaginationResponse {
-    public let elements: Element
+    public let element: Element
     public let nextPage: Int?
 
-    public init(elements: Element, nextPage: Int?) {
-        self.elements = elements
+    public init(element: Element, nextPage: Int?) {
+        self.element = element
         self.nextPage = nextPage
     }
 }

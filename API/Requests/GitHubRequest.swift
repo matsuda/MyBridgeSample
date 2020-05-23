@@ -69,7 +69,7 @@ extension PaginationRequest {
 //        urlResponse.allHeaderFields.forEach { print($0) }
 //        print("====================================")
 
-        let elements = try JSONDecoder().decode(Response.Element.self, from: data)
+        let element = try JSONDecoder().decode(Response.Element.self, from: data)
         let nextURI = urlResponse.findLink(relation: "next")?.uri
         print("nextURI >>>>>>>", nextURI as Any)
         let queryItems = nextURI.flatMap(URLComponents.init)?.queryItems
@@ -78,7 +78,7 @@ extension PaginationRequest {
             .compactMap { $0.value }
             .compactMap { Int($0) }
             .first
-        return Response(elements: elements, nextPage: nextPage)
+        return Response(element: element, nextPage: nextPage)
     }
 }
 
