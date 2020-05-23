@@ -1,5 +1,5 @@
 //
-//  SearchUserViewModel.swift
+//  SearchUserListViewModel.swift
 //  MyBridgeSample
 //
 //  Created by Kosuke Matsuda on 2020/05/23.
@@ -10,7 +10,7 @@ import Foundation
 import RxSwift
 import RxCocoa
 
-final class SearchUserViewModel {
+final class SearchUserListViewModel {
     struct Dependency {
         let searchUserUseCase: SearchUserUseCase
     }

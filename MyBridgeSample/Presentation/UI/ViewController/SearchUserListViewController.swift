@@ -16,7 +16,7 @@ final class SearchUserListViewController: UIViewController {
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
 
-    private lazy var viewModel: SearchUserViewModel = createViewModel()
+    private lazy var viewModel: SearchUserListViewModel = createViewModel()
     private var users: [User] = []
     private let disposeBag = DisposeBag()
 
@@ -37,8 +37,8 @@ extension SearchUserListViewController {
         tableView.registerNib(UserListCell.self)
     }
 
-    private func createViewModel() -> SearchUserViewModel {
-        let viewModel = SearchUserViewModel(
+    private func createViewModel() -> SearchUserListViewModel {
+        let viewModel = SearchUserListViewModel(
             didChangeKeyword: searchBar.rx.text.orEmpty.asDriver(),
             dependency: .init(searchUserUseCase: SearchUserUseCaseImpl.build()))
 
