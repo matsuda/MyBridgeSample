@@ -21,9 +21,13 @@ final class SearchUserRepositoryImpl: SearchUserRepository {
     func search(keyword: String, page: Int? = nil) -> Single<[GitHubUser]> {
         let request = SearchUserRequest(q: keyword, page: page)
         return session.response(request: request)
-            .map { searchUserResponse in
-                searchUserResponse.element.users.map(GitHubUser.init(user:))
-        }
+            .map({ searchUserResponse in
+                searchUserResponse.element.users
+                    .sorted(by: { (a, b) -> Bool in
+                        a.login.lowercased() < b.login.lowercased()
+                    })
+                    .map(GitHubUser.init(user:))
+            })
     }
 }
 

@@ -13,7 +13,6 @@ final class FavoriteUser: Object {
     @objc dynamic var id = 0
     @objc dynamic var name = ""
     @objc dynamic var avatarUrl: String? = nil
-    @objc dynamic var timestamp: Date = Date()
 
     override static func indexedProperties() -> [String] {
         return ["id", "name"]
@@ -25,7 +24,7 @@ final class FavoriteUser: Object {
 
 extension Results where Element: FavoriteUser {
     func orderd() -> Results<Element> {
-        return sorted(byKeyPath: "timestamp", ascending: false)
+        return sorted(byKeyPath: "name", ascending: true)
     }
 }
 
