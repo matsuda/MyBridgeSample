@@ -65,8 +65,8 @@ extension SearchUserListViewController {
             favoriteUserRepository: favoriteRepository
         )
         return SearchUserListViewModel(
-            didChangeKeyword: searchBar.rx.text.orEmpty.asDriver(),
-            useCase: useCase
+            useCase: useCase,
+            didChangeKeyword: searchBar.rx.text.orEmpty.asDriver()
         )
     }
 

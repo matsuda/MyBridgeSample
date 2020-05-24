@@ -27,6 +27,11 @@ final class FavoriteUserRepositoryImpl: FavoriteUserRepository {
             .map { User(favoriteUser: $0) }
     }
 
+    func fetchBy(likeName name: String) -> [User] {
+        FavoriteUser.find(realm, likeName: name)
+            .map { User(favoriteUser: $0) }
+    }
+
     func add(user: User) {
         let obj = FavoriteUser(user: user)
         try! realm.write {

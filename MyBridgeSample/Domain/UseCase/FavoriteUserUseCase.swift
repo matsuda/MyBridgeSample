@@ -13,9 +13,7 @@ import RealmSwift
 // MARK: - FavoriteUserUseCaseImple
 
 protocol FavoriteUserUseCase {
-//    func fetchAll() -> Single<[User]>
-//    func isExist(user: User) -> Bool
-    func fetchAll() -> [User]
+    func search(name: String) -> [User]
     func add(user: User)
     func remove(id: Int)
 }
@@ -26,6 +24,7 @@ protocol FavoriteUserUseCase {
 protocol FavoriteUserRepository {
     func fetchAll() -> [User]
     func fetchBy(id: Int) -> User?
+    func fetchBy(likeName name: String) -> [User]
     func add(user: User)
     func remove(id: Int)
 }
@@ -35,18 +34,13 @@ protocol FavoriteUserRepository {
 
 final class FavoriteUserUseCaseImpl: FavoriteUserUseCase {
     private let repository: FavoriteUserRepository
-//    private let realm: Realm
 
     init(repository: FavoriteUserRepository) {
         self.repository = repository
     }
 
-//    init(realm: Realm) {
-//        self.realm = realm
-//    }
-
-    func fetchAll() -> [User] {
-        repository.fetchAll()
+    func search(name: String) -> [User] {
+        repository.fetchBy(likeName: name)
     }
 
     func add(user: User) {
@@ -56,23 +50,4 @@ final class FavoriteUserUseCaseImpl: FavoriteUserUseCase {
     func remove(id: Int) {
         repository.remove(id: id)
     }
-
-//    func fetchAll() -> Single<[User]> {
-//        repository
-//            .findAll()
-//            .map({ favoriteUsers in
-//                favoriteUsers.map({
-//                    User(favoriteUser: $0)
-//                })
-//            })
-//    }
-
-//    func isExist(user: User) -> Single<Bool> {
-//        repository.findBy(id: user.id)
-//            .map { $0 != nil}
-//    }
-
-//    func add(user: User) {
-//        repository.add(user: user)
-//    }
 }

@@ -21,8 +21,8 @@ final class SearchUserListViewModel {
     private let useCase: SearchUserUseCase
     private let disposeBag = DisposeBag()
 
-    init(didChangeKeyword: Driver<String>,
-         useCase: SearchUserUseCase) {
+    init(useCase: SearchUserUseCase,
+         didChangeKeyword: Driver<String>) {
 
         self.useCase = useCase
         didChangeKeyword.skip(1)

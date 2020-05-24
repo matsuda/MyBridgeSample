@@ -42,6 +42,11 @@ extension FavoriteUser {
         return find(realm, condition: predicate).first
     }
 
+    static func find(_ realm: Realm, likeName name: String) -> Results<FavoriteUser> {
+        let predicate = NSPredicate(format: "name CONTAINS[c] %@", name)
+        return find(realm, condition: predicate)
+    }
+
     static func find(_ realm: Realm, condition predicate: NSPredicate) -> Results<FavoriteUser> {
         return realm.objects(self).filter(predicate).orderd()
     }

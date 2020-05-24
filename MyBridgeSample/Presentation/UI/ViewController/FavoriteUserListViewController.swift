@@ -58,8 +58,8 @@ extension FavoriteUserListViewController {
         let repository = FavoriteUserRepositoryImpl(realm: realm)
         let useCase = FavoriteUserUseCaseImpl(repository: repository)
         return FavoriteUserListViewModel(
-            realm: realm,
-            useCase: useCase
+            useCase: useCase,
+            didChangeKeyword: searchBar.rx.text.orEmpty.asDriver()
         )
     }
 
