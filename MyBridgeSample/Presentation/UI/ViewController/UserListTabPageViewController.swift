@@ -21,6 +21,7 @@ final class UserListTabPageViewController: TabPageViewController {
         let vc2 = FavoriteUserListViewController.make()
         tabItems = [(vc1, "API"), (vc2, "ローカル")]
         option.tabWidth = view.frame.width / CGFloat(tabItems.count)
+        option.fontSize = 17
         option.hidesTopViewOnSwipeType = .all
     }
 

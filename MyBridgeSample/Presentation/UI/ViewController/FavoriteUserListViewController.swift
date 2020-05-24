@@ -28,7 +28,24 @@ final class FavoriteUserListViewController: UIViewController, TabPageContentView
 
         prepareTableView()
         prepareTabPage()
+        prepareSearchBar()
         setupObservable()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        DispatchQueue.main.async {
+            self.searchBar.becomeFirstResponder()
+        }
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        searchBar.resignFirstResponder()
     }
 }
 
@@ -48,6 +65,11 @@ extension FavoriteUserListViewController {
 
     private func prepareTableView() {
         tableView.registerNib(UserListCell.self)
+        tableView.keyboardDismissMode = .onDrag
+    }
+
+    private func prepareSearchBar() {
+        searchBar.placeholder = "ユーザ名を入力してください"
     }
 
     private func setupObservable() {
