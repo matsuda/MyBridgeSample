@@ -42,7 +42,9 @@ final class SearchUserListViewController: UIViewController, TabPageContentViewCo
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         DispatchQueue.main.async {
-            self.searchBar.becomeFirstResponder()
+            if self.searchBar.text?.isEmpty ?? true {
+                self.searchBar.becomeFirstResponder()
+            }
         }
     }
 
