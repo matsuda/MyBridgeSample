@@ -11,7 +11,9 @@ import RxSwift
 import RxCocoa
 
 final class SearchUserListViewModel {
-    private(set) var users: [User] = []
+    private(set) var nameInitials: [String] = []
+    private(set) var userList: [String: [User]] = [:]
+
     var updateState: Observable<ListUpdateState> {
         _updateState.asObservable()
     }
@@ -40,7 +42,8 @@ final class SearchUserListViewModel {
         }
         .drive(onNext: { [weak self] (users) in
             guard let self = self else { return }
-            self.users = users
+            self.userList = Dictionary(grouping: users) { $0.initialIndexTitle }
+            self.nameInitials = self.userList.keys.sorted()
             self._updateState.accept(.initial(isEmpty: users.isEmpty))
         })
         .disposed(by: disposeBag)
@@ -49,28 +52,48 @@ final class SearchUserListViewModel {
             .subscribe(onNext: { [weak self] (change) in
                 guard let self = self else { return }
 
-                let id = change.0
+                let user = change.0
                 let isLike = change.1
+                let ini = user.initialIndexTitle
 
-                if let index = self.users.firstIndex(where: { $0.id == id }) {
-                    var user = self.users[index]
+                if let section = self.nameInitials.firstIndex(of: ini),
+                    var users = self.userList[ini],
+                    let row = users.firstIndex(where: { $0 == user }) {
+                    var user = users[row]
                     user.isFavorite = isLike
-                    self.users[index] = user
-                    self._updateState.accept(.update(isEmpty: self.users.isEmpty,
+                    users[row] = user
+                    self.userList[ini] = users
+                    self._updateState.accept(.update(isEmpty: self.userList.isEmpty,
                                                      deletions: [],
                                                      insertiona: [],
-                                                     modifications: [index]))
+                                                     modifications: [IndexPath(row: row, section: section)]))
                 }
             })
             .disposed(by: disposeBag)
     }
 
     func like(at indexPath: IndexPath) {
-        let user = users[indexPath.row]
+        let ini = nameInitials[indexPath.section]
+        let user = userList[ini]![indexPath.row]
+
         useCase.like(user: user)
             .subscribe(onSuccess: { [weak self] (isFavorite) in
-                self?.appStore.didChangeFavorite.onNext((user.id, isFavorite))
+                self?.appStore.didChangeFavorite.onNext((user, isFavorite))
             })
             .disposed(by: disposeBag)
+    }
+}
+
+
+// MARK: - Array
+
+extension Array where Element: Hashable {
+    func uniq() -> [Element] {
+        var set: Set<Element> = .init()
+        return filter { (elm) -> Bool in
+            if set.contains(elm) { return false }
+            set.insert(elm)
+            return true
+        }
     }
 }

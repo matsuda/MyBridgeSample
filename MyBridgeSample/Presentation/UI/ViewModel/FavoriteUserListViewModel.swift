@@ -11,7 +11,9 @@ import RxSwift
 import RxCocoa
 
 final class FavoriteUserListViewModel {
-    private(set) var users: [User] = []
+    private(set) var nameInitials: [String] = []
+    private(set) var userList: [String: [User]] = [:]
+
     var updateState: Observable<ListUpdateState> {
         _updateState.asObservable()
     }
@@ -47,7 +49,8 @@ final class FavoriteUserListViewModel {
             })
             .drive(onNext: { [weak self] (users) in
                 guard let self = self else { return }
-                self.users = users
+                self.userList = Dictionary(grouping: users) { $0.initialIndexTitle }
+                self.nameInitials = self.userList.keys.sorted()
                 self._updateState.accept(.initial(isEmpty: users.isEmpty))
             })
             .disposed(by: disposeBag)
@@ -56,18 +59,22 @@ final class FavoriteUserListViewModel {
             .subscribe(onNext: { [weak self] (change) in
                 guard let self = self else { return }
 
-                let id = change.0
+                let user = change.0
                 let isLike = change.1
+                let ini = user.initialIndexTitle
 
                 if isLike {
                     if let keyword = self.keyword {
                         refresh.accept(keyword)
                     }
                 } else {
-                    if let index = self.users.firstIndex(where: { $0.id == id }) {
-                        self.users.remove(at: index)
-                        self._updateState.accept(.update(isEmpty: self.users.isEmpty,
-                                                         deletions: [index],
+                    if let section = self.nameInitials.firstIndex(of: ini),
+                        var users = self.userList[ini],
+                        let row = users.firstIndex(where: { $0 == user }) {
+                        users.remove(at: row)
+                        self.userList[ini] = users
+                        self._updateState.accept(.update(isEmpty: self.userList.isEmpty,
+                                                         deletions: [IndexPath(row: row, section: section)],
                                                          insertiona: [],
                                                          modifications: []))
                     }
@@ -77,10 +84,11 @@ final class FavoriteUserListViewModel {
     }
 
     func like(at indexPath: IndexPath) {
-        let user = users[indexPath.row]
+        let ini = nameInitials[indexPath.section]
+        let user = userList[ini]![indexPath.row]
         useCase.remove(id: user.id)
             .subscribe(onSuccess: { [weak self] (isFavorite) in
-                self?.appStore.didChangeFavorite.onNext((user.id, isFavorite))
+                self?.appStore.didChangeFavorite.onNext((user, isFavorite))
             })
             .disposed(by: disposeBag)
     }

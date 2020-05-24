@@ -37,3 +37,10 @@ extension User: Equatable {
         return lhs.id == rhs.id
     }
 }
+
+
+extension User {
+    var initialIndexTitle: String {
+        return String(name.lowercased().first!)
+    }
+}

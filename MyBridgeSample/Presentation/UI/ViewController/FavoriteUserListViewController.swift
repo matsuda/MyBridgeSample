@@ -83,12 +83,9 @@ extension FavoriteUserListViewController {
                     self.tableView.reloadData()
                 case .update(_, let deletions, let insertiona, let modifications):
                     self.tableView.beginUpdates()
-                    let dels = deletions.map { IndexPath(row: $0, section: 0) }
-                    let ins = insertiona.map { IndexPath(row: $0, section: 0) }
-                    let mods = modifications.map { IndexPath(row: $0, section: 0) }
-                    self.tableView.deleteRows(at: dels, with: .automatic)
-                    self.tableView.insertRows(at: ins, with: .automatic)
-                    self.tableView.reloadRows(at: mods, with: .automatic)
+                    self.tableView.deleteRows(at: deletions, with: .automatic)
+                    self.tableView.insertRows(at: insertiona, with: .automatic)
+                    self.tableView.reloadRows(at: modifications, with: .automatic)
                     self.tableView.endUpdates()
                 }
             })
@@ -100,15 +97,34 @@ extension FavoriteUserListViewController {
 // MARK: - UITableViewDataSource
 
 extension FavoriteUserListViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        viewModel.nameInitials.count
+    }
+
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return viewModel.nameInitials[section]
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return viewModel.users.count
+        let inital = viewModel.nameInitials[section]
+        return viewModel.userList[inital]!.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(UserListCell.self, for: indexPath)
-        let user = viewModel.users[indexPath.row]
+        let inital = viewModel.nameInitials[indexPath.section]
+        let users = viewModel.userList[inital]!
+        let user = users[indexPath.row]
         cell.configure(user: user)
         return cell
+    }
+
+    func sectionIndexTitles(for tableView: UITableView) -> [String]? {
+        return viewModel.nameInitials
+    }
+
+    func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
+        return index
     }
 }
 

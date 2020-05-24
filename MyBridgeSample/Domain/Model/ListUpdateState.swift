@@ -10,6 +10,6 @@ import Foundation
 
 enum ListUpdateState {
     case initial(isEmpty: Bool)
-    case update(isEmpty: Bool, deletions: [Int], insertiona: [Int], modifications: [Int])
+    case update(isEmpty: Bool, deletions: [IndexPath], insertiona: [IndexPath], modifications: [IndexPath])
     case error(Error)
 }
