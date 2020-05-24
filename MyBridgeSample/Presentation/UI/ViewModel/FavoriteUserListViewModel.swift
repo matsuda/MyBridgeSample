@@ -18,11 +18,15 @@ final class FavoriteUserListViewModel {
     private let _updateState: PublishRelay<ListUpdateState> = .init()
 
     private let useCase: FavoriteUserUseCase
+    private let appStore: ApplicationStore
     private let disposeBag = DisposeBag()
 
     init(useCase: FavoriteUserUseCase,
+         appStore: ApplicationStore = .shared,
          didChangeKeyword: Driver<String>) {
+
         self.useCase = useCase
+        self.appStore = appStore
 
         didChangeKeyword.skip(1)
             .debounce(.microseconds(300))
@@ -36,10 +40,30 @@ final class FavoriteUserListViewModel {
                 self._updateState.accept(.initial(isEmpty: users.isEmpty))
             })
             .disposed(by: disposeBag)
+
+        appStore.didChangeFavorite
+            .subscribe(onNext: { [weak self] (change) in
+                guard let self = self else { return }
+
+                let user = change.0
+                let isLike = change.1
+
+                if let index = self.users.firstIndex(where: { $0 == user }) {
+                    var user = self.users[index]
+                    user.isFavorite = isLike
+                    self.users[index] = user
+                    self._updateState.accept(.update(isEmpty: self.users.isEmpty,
+                                                     deletions: [],
+                                                     insertiona: [],
+                                                     modifications: [index]))
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     func like(at indexPath: IndexPath) {
         let user = users[indexPath.row]
         useCase.remove(id: user.id)
+        appStore.didChangeFavorite.onNext((user, false))
     }
 }

@@ -16,15 +16,18 @@ final class SearchUserListViewModel {
         _updateState.asObservable()
     }
     private let _updateState: PublishRelay<ListUpdateState> = .init()
-//    var users: Driver<[User]>
 
     private let useCase: SearchUserUseCase
+    private let appStore: ApplicationStore
     private let disposeBag = DisposeBag()
 
     init(useCase: SearchUserUseCase,
+         appStore: ApplicationStore = .shared,
          didChangeKeyword: Driver<String>) {
 
         self.useCase = useCase
+        self.appStore = appStore
+
         didChangeKeyword.skip(1)
             .debounce(.microseconds(300))
             .distinctUntilChanged()
@@ -41,6 +44,25 @@ final class SearchUserListViewModel {
             self._updateState.accept(.initial(isEmpty: users.isEmpty))
         })
         .disposed(by: disposeBag)
+
+        appStore.didChangeFavorite
+            .subscribe(onNext: { [weak self] (change) in
+                guard let self = self else { return }
+
+                let user = change.0
+                let isLike = change.1
+
+                if let index = self.users.firstIndex(where: { $0 == user }) {
+                    var user = self.users[index]
+                    user.isFavorite = isLike
+                    self.users[index] = user
+                    self._updateState.accept(.update(isEmpty: self.users.isEmpty,
+                                                     deletions: [],
+                                                     insertiona: [],
+                                                     modifications: [index]))
+                }
+            })
+            .disposed(by: disposeBag)
     }
 
     func like(at indexPath: IndexPath) {
@@ -48,15 +70,7 @@ final class SearchUserListViewModel {
         useCase.like(user: user)
             .subscribe(onSuccess: { [weak self] (newUser) in
                 guard let self = self else { return }
-                if let index = self.users.firstIndex(where: { $0 == user }) {
-                    var user = self.users[index]
-                    user.isFavorite = newUser != nil
-                    self.users[index] = user
-                    self._updateState.accept(.update(isEmpty: self.users.isEmpty,
-                                                     deletions: [],
-                                                     insertiona: [],
-                                                     modifications: [index]))
-                }
+                self.appStore.didChangeFavorite.onNext((user, newUser != nil))
             }, onError: { (_) in
             })
         .disposed(by: disposeBag)
