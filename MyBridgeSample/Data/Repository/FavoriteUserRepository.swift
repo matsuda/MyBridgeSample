@@ -8,6 +8,9 @@
 
 import Foundation
 import RealmSwift
+import RxSwift
+
+typealias FavoriteActionCompletion = (Result<(Int, Bool), Error>) -> Void
 
 final class FavoriteUserRepositoryImpl: FavoriteUserRepository {
     private let realm: Realm
@@ -16,31 +19,64 @@ final class FavoriteUserRepositoryImpl: FavoriteUserRepository {
         self.realm = realm
     }
 
-    func fetchAll() -> [User] {
-        FavoriteUser
-            .findAll(realm)
-            .map { User(favoriteUser: $0) }
-    }
-
     func fetchBy(id: Int) -> User? {
         FavoriteUser.find(realm, id: id)
             .map { User(favoriteUser: $0) }
     }
 
-    func fetchBy(likeName name: String) -> [User] {
-        FavoriteUser.find(realm, likeName: name)
-            .map { User(favoriteUser: $0) }
-    }
+//    func fetchBy(likeName name: String) -> [User] {
+//        FavoriteUser.find(realm, likeName: name)
+//            .map { User(favoriteUser: $0) }
+//    }
 
-    func add(user: User) {
-        let obj = FavoriteUser(user: user)
-        try! realm.write {
-            realm.add(obj)
+//    func add(user: User) {
+//        let obj = FavoriteUser(user: user)
+//        try? realm.write {
+//            realm.add(obj)
+//        }
+//    }
+//
+//    func remove(id: Int) {
+//        try? FavoriteUser.delete(realm, id: id)
+//    }
+
+    func fetchBy(likeName name: String) -> Single<[User]> {
+        let single = Single<[User]>.create { (observer) -> Disposable in
+            let results = FavoriteUser.find(self.realm, likeName: name)
+                .map { User(favoriteUser: $0) }
+            observer(.success(Array(results)))
+            return Disposables.create()
         }
+        return single
     }
 
-    func remove(id: Int) {
-        try! FavoriteUser.delete(realm, id: id)
+    func add(user: User) -> Single<Bool> {
+        let single = Single<Bool>.create { (observer) -> Disposable in
+            let obj = FavoriteUser(user: user)
+            do {
+                try self.realm.write {
+                    self.realm.add(obj)
+                }
+                observer(.success(true))
+            } catch {
+                observer(.error(error))
+            }
+            return Disposables.create()
+        }
+        return single
+    }
+
+    func remove(id: Int) -> Single<Bool> {
+        let single = Single<Bool>.create { (observer) -> Disposable in
+            do {
+                try FavoriteUser.delete(self.realm, id: id)
+                observer(.success(false))
+            } catch {
+                observer(.error(error))
+            }
+            return Disposables.create()
+        }
+        return single
     }
 }
 

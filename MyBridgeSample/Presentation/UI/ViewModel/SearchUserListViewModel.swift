@@ -49,10 +49,10 @@ final class SearchUserListViewModel {
             .subscribe(onNext: { [weak self] (change) in
                 guard let self = self else { return }
 
-                let user = change.0
+                let id = change.0
                 let isLike = change.1
 
-                if let index = self.users.firstIndex(where: { $0 == user }) {
+                if let index = self.users.firstIndex(where: { $0.id == id }) {
                     var user = self.users[index]
                     user.isFavorite = isLike
                     self.users[index] = user
@@ -68,11 +68,9 @@ final class SearchUserListViewModel {
     func like(at indexPath: IndexPath) {
         let user = users[indexPath.row]
         useCase.like(user: user)
-            .subscribe(onSuccess: { [weak self] (newUser) in
-                guard let self = self else { return }
-                self.appStore.didChangeFavorite.onNext((user, newUser != nil))
-            }, onError: { (_) in
+            .subscribe(onSuccess: { [weak self] (isFavorite) in
+                self?.appStore.didChangeFavorite.onNext((user.id, isFavorite))
             })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
     }
 }

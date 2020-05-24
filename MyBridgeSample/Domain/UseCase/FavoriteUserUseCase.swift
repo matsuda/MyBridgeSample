@@ -13,20 +13,25 @@ import RealmSwift
 // MARK: - FavoriteUserUseCaseImple
 
 protocol FavoriteUserUseCase {
-    func search(name: String) -> [User]
-    func add(user: User)
-    func remove(id: Int)
+//    func search(name: String) -> [User]
+//    func add(user: User)
+//    func remove(id: Int)
+    func search(name: String) -> Single<[User]>
+    func add(user: User) -> Single<Bool>
+    func remove(id: Int) -> Single<Bool>
 }
 
 
 // MARK: - FavoriteUserRepository
 
 protocol FavoriteUserRepository {
-    func fetchAll() -> [User]
     func fetchBy(id: Int) -> User?
-    func fetchBy(likeName name: String) -> [User]
-    func add(user: User)
-    func remove(id: Int)
+//    func fetchBy(likeName name: String) -> [User]
+//    func add(user: User)
+//    func remove(id: Int)
+    func fetchBy(likeName name: String) -> Single<[User]>
+    func add(user: User) -> Single<Bool>
+    func remove(id: Int) -> Single<Bool>
 }
 
 
@@ -39,15 +44,19 @@ final class FavoriteUserUseCaseImpl: FavoriteUserUseCase {
         self.repository = repository
     }
 
-    func search(name: String) -> [User] {
+//    func search(name: String) -> [User] {
+//        repository.fetchBy(likeName: name)
+//    }
+
+    func search(name: String) -> Single<[User]> {
         repository.fetchBy(likeName: name)
     }
 
-    func add(user: User) {
+    func add(user: User) -> Single<Bool> {
         repository.add(user: user)
     }
 
-    func remove(id: Int) {
+    func remove(id: Int) -> Single<Bool> {
         repository.remove(id: id)
     }
 }

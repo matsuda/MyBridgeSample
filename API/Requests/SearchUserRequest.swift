@@ -26,7 +26,7 @@ public struct SearchUserRequest: GitHubRequest, PaginationRequest {
 
     public var queryParameters: [String: Any]? {
         var params: [String: Any] = [
-            "q": q
+            "q": "\(q) in:login"
         ]
         if let value = paginationParameters {
             params.merge(value) { $1 }

@@ -19,6 +19,7 @@ final class FavoriteUserListViewModel {
 
     private let useCase: FavoriteUserUseCase
     private let appStore: ApplicationStore
+    private var keyword: String?
     private let disposeBag = DisposeBag()
 
     init(useCase: FavoriteUserUseCase,
@@ -28,11 +29,21 @@ final class FavoriteUserListViewModel {
         self.useCase = useCase
         self.appStore = appStore
 
-        didChangeKeyword.skip(1)
+        let refresh: PublishRelay<String> = .init()
+
+        let fixKeyword = didChangeKeyword.skip(1)
             .debounce(.microseconds(300))
             .distinctUntilChanged()
-            .map({ (keyword) in
-                useCase.search(name: keyword)
+
+        Driver.merge(fixKeyword, refresh.asDriver(onErrorDriveWith: .empty()))
+            .flatMapLatest({ [weak self] keyword in
+                return useCase.search(name: keyword)
+                    .asObservable()
+                    .do(onNext: { (_) in
+                        self?.keyword = keyword
+                    })
+                    .startWith([])
+                    .asDriver(onErrorJustReturn: [])
             })
             .drive(onNext: { [weak self] (users) in
                 guard let self = self else { return }
@@ -45,17 +56,21 @@ final class FavoriteUserListViewModel {
             .subscribe(onNext: { [weak self] (change) in
                 guard let self = self else { return }
 
-                let user = change.0
+                let id = change.0
                 let isLike = change.1
 
-                if let index = self.users.firstIndex(where: { $0 == user }) {
-                    var user = self.users[index]
-                    user.isFavorite = isLike
-                    self.users[index] = user
-                    self._updateState.accept(.update(isEmpty: self.users.isEmpty,
-                                                     deletions: [],
-                                                     insertiona: [],
-                                                     modifications: [index]))
+                if isLike {
+                    if let keyword = self.keyword {
+                        refresh.accept(keyword)
+                    }
+                } else {
+                    if let index = self.users.firstIndex(where: { $0.id == id }) {
+                        self.users.remove(at: index)
+                        self._updateState.accept(.update(isEmpty: self.users.isEmpty,
+                                                         deletions: [index],
+                                                         insertiona: [],
+                                                         modifications: []))
+                    }
                 }
             })
             .disposed(by: disposeBag)
@@ -64,6 +79,9 @@ final class FavoriteUserListViewModel {
     func like(at indexPath: IndexPath) {
         let user = users[indexPath.row]
         useCase.remove(id: user.id)
-        appStore.didChangeFavorite.onNext((user, false))
+            .subscribe(onSuccess: { [weak self] (isFavorite) in
+                self?.appStore.didChangeFavorite.onNext((user.id, isFavorite))
+            })
+            .disposed(by: disposeBag)
     }
 }

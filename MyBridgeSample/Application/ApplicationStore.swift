@@ -16,5 +16,5 @@ final class ApplicationStore {
 
     init() {}
 
-    let didChangeFavorite: PublishSubject<(User, Bool)> = .init()
+    let didChangeFavorite: PublishSubject<(Int, Bool)> = .init()
 }
