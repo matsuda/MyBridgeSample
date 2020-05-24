@@ -15,7 +15,7 @@ import RxSwift
 
 protocol SearchUserUseCase {
     func search(keyword: String, page: Int?) -> Single<[User]>
-    func like(user: User)
+    func like(user: User) -> Single<User?>
 }
 
 
@@ -47,12 +47,18 @@ final class SearchUserUseCaseImpl: SearchUserUseCase {
             })
     }
 
-    func like(user: User) {
-        let current = user.isFavorite
-        if current {
-            favoriteUserRepository.remove(id: user.id)
-        } else {
-            favoriteUserRepository.add(user: user)
+    func like(user: User) -> Single<User?> {
+        let single = Single<User?>.create { (observer) -> Disposable in
+            let current = user.isFavorite
+            if current {
+                self.favoriteUserRepository.remove(id: user.id)
+            } else {
+                self.favoriteUserRepository.add(user: user)
+            }
+            let newUser = self.favoriteUserRepository.fetchBy(id: user.id)
+            observer(.success(newUser))
+            return Disposables.create()
         }
+        return single
     }
 }

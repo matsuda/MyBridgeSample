@@ -28,3 +28,12 @@ struct User {
         isFavorite = true
     }
 }
+
+
+// MARK: - Equatable
+
+extension User: Equatable {
+    public static func == (lhs: User, rhs: User) -> Bool {
+        return lhs.id == rhs.id
+    }
+}

@@ -19,7 +19,6 @@ final class SearchUserListViewController: UIViewController {
     @IBOutlet private weak var searchBar: UISearchBar!
 
     private lazy var viewModel: SearchUserListViewModel = createViewModel()
-    private var users: [User] = []
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
@@ -27,7 +26,6 @@ final class SearchUserListViewController: UIViewController {
 
         prepareTableView()
         setupObservable()
-//        loadData()
     }
 }
 
@@ -54,10 +52,24 @@ extension SearchUserListViewController {
     }
 
     private func setupObservable() {
-        viewModel.users
-            .drive(onNext: { [weak self] (users) in
-                self?.users = users
-                self?.tableView.reloadData()
+        viewModel.updateState
+            .subscribe(onNext: { [weak self] (state) in
+                guard let self = self else { return }
+                switch state {
+                case .error(_):
+                    break
+                case .initial:
+                    self.tableView.reloadData()
+                case .update(_, let deletions, let insertiona, let modifications):
+                    self.tableView.beginUpdates()
+                    let dels = deletions.map { IndexPath(row: $0, section: 0) }
+                    let ins = insertiona.map { IndexPath(row: $0, section: 0) }
+                    let mods = modifications.map { IndexPath(row: $0, section: 0) }
+                    self.tableView.deleteRows(at: dels, with: .automatic)
+                    self.tableView.insertRows(at: ins, with: .automatic)
+                    self.tableView.reloadRows(at: mods, with: .automatic)
+                    self.tableView.endUpdates()
+                }
             })
             .disposed(by: disposeBag)
     }
@@ -68,12 +80,12 @@ extension SearchUserListViewController {
 
 extension SearchUserListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return users.count
+        return viewModel.users.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(UserListCell.self, for: indexPath)
-        let user = users[indexPath.row]
+        let user = viewModel.users[indexPath.row]
         cell.configure(user: user)
         return cell
     }
@@ -84,26 +96,6 @@ extension SearchUserListViewController: UITableViewDataSource {
 
 extension SearchUserListViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let user = users[indexPath.row]
-        viewModel.like(user: user)
+        viewModel.like(at: indexPath)
     }
 }
-
-
-// MARK: - for dev
-
-#if DEBUG
-extension SearchUserListViewController {
-    private func loadData() {
-        guard let path = Bundle.main.path(forResource: "users", ofType: "json") else { return }
-        let url = URL(fileURLWithPath: path)
-        guard let data = try? Data(contentsOf: url) else { return }
-        guard let userList = try? JSONDecoder().decode(GitHubUserList.self, from: data) else {
-            return
-        }
-        users = userList.users.map {
-            User(gitHubUser: $0)
-        }
-    }
-}
-#endif

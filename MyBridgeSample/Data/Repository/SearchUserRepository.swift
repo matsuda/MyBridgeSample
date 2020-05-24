@@ -27,8 +27,39 @@ final class SearchUserRepositoryImpl: SearchUserRepository {
     }
 }
 
+
+// MARK: - GitHubUser
+
 extension GitHubUser {
     init(user: API.User) {
         self.init(id: user.id, login: user.login, avatarUrl: user.avatarUrl)
     }
 }
+
+
+#if DEBUG
+final class SearchUserRepositoryStub: SearchUserRepository {
+    func search(keyword: String, page: Int?) -> Single<[GitHubUser]> {
+        Single<[GitHubUser]>.create { (observer) -> Disposable in
+            if let users = self.loadData()?.users {
+                observer(.success(users))
+            } else {
+                observer(.success([]))
+            }
+            return Disposables.create()
+        }
+    }
+
+    private func loadData() -> GitHubUserList? {
+        guard let path = Bundle.main.path(forResource: "users", ofType: "json") else {
+            return nil
+        }
+        let url = URL(fileURLWithPath: path)
+        guard let data = try? Data(contentsOf: url) else { return nil}
+        guard let userList = try? JSONDecoder().decode(GitHubUserList.self, from: data) else {
+            return nil
+        }
+        return userList
+    }
+}
+#endif

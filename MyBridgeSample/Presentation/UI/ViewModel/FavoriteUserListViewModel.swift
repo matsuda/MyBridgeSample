@@ -12,21 +12,16 @@ import RxCocoa
 import RealmSwift
 
 final class FavoriteUserListViewModel {
-    enum UpdateState {
-        case initial(isEmpty: Bool)
-        case update(isEmpty: Bool, deletions: [Int], insertiona: [Int], modifications: [Int])
-        case error(Error)
-    }
-
-    var updateState: Observable<UpdateState> {
+    private(set) var users: [User] = []
+    var updateState: Observable<ListUpdateState> {
         _updateState.asObservable()
     }
-    private let _updateState: PublishRelay<UpdateState> = .init()
+    private let _updateState: PublishRelay<ListUpdateState> = .init()
+
     private let useCase: FavoriteUserUseCase
 //    var users: Driver<[User]>
 //    private let results: Results<FavoriteUser>
     private var notificationToken: NotificationToken?
-    var users: [User] = []
 
     init(realm: Realm,
          useCase: FavoriteUserUseCase) {
@@ -55,10 +50,7 @@ final class FavoriteUserListViewModel {
     deinit {
         notificationToken?.invalidate()
     }
-}
 
-
-extension FavoriteUserListViewModel {
     func like(at indexPath: IndexPath) {
         let user = users[indexPath.row]
         useCase.remove(id: user.id)

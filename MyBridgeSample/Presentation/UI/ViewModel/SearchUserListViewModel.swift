@@ -11,16 +11,21 @@ import RxSwift
 import RxCocoa
 
 final class SearchUserListViewModel {
-    var users: Driver<[User]>
+    private(set) var users: [User] = []
+    var updateState: Observable<ListUpdateState> {
+        _updateState.asObservable()
+    }
+    private let _updateState: PublishRelay<ListUpdateState> = .init()
+//    var users: Driver<[User]>
 
     private let useCase: SearchUserUseCase
+    private let disposeBag = DisposeBag()
 
     init(didChangeKeyword: Driver<String>,
          useCase: SearchUserUseCase) {
 
         self.useCase = useCase
-
-        self.users = didChangeKeyword.skip(1)
+        didChangeKeyword.skip(1)
             .debounce(.microseconds(300))
             .distinctUntilChanged()
             .flatMapLatest { keyword in
@@ -30,12 +35,30 @@ final class SearchUserListViewModel {
                     .startWith([])
                     .asDriver(onErrorJustReturn: [])
         }
+        .drive(onNext: { [weak self] (users) in
+            guard let self = self else { return }
+            self.users = users
+            self._updateState.accept(.initial(isEmpty: users.isEmpty))
+        })
+        .disposed(by: disposeBag)
     }
-}
 
-
-extension SearchUserListViewModel {
-    func like(user: User) {
+    func like(at indexPath: IndexPath) {
+        let user = users[indexPath.row]
         useCase.like(user: user)
+            .subscribe(onSuccess: { [weak self] (newUser) in
+                guard let self = self else { return }
+                if let index = self.users.firstIndex(where: { $0 == user }) {
+                    var user = self.users[index]
+                    user.isFavorite = newUser != nil
+                    self.users[index] = user
+                    self._updateState.accept(.update(isEmpty: self.users.isEmpty,
+                                                     deletions: [],
+                                                     insertiona: [],
+                                                     modifications: [index]))
+                }
+            }, onError: { (_) in
+            })
+        .disposed(by: disposeBag)
     }
 }
