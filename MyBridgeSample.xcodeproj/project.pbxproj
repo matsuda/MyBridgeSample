@@ -50,7 +50,7 @@
 		0E4E8B5F2474B71900A4B398 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B452474AEEA00A4B398 /* RxTest.framework */; };
 		0EB29E6E2476D95A000BF55B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E6C2476D95A000BF55B /* AppDelegate.swift */; };
 		0EB29E6F2476D95A000BF55B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E6D2476D95A000BF55B /* SceneDelegate.swift */; };
-		0EB29E742476DA14000BF55B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E732476DA14000BF55B /* ViewController.swift */; };
+		0EB29E742476DA14000BF55B /* UserListContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E732476DA14000BF55B /* UserListContainerViewController.swift */; };
 		0EB29E762476DB0A000BF55B /* SearchUserListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E752476DB0A000BF55B /* SearchUserListViewController.swift */; };
 		0EB29E782476DB1C000BF55B /* SearchUserListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EB29E772476DB1C000BF55B /* SearchUserListViewController.storyboard */; };
 		0EB29E7B2476DDA1000BF55B /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 0EB29E7A2476DDA1000BF55B /* users.json */; };
@@ -61,6 +61,7 @@
 		0EB29E902476EFA6000BF55B /* FavoriteUserListViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EB29E8F2476EFA6000BF55B /* FavoriteUserListViewController.storyboard */; };
 		0EB29E922476F39F000BF55B /* FavoriteUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E912476F39F000BF55B /* FavoriteUser.swift */; };
 		0EDA96DD247A434100397D6B /* ListUpdateState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA96DC247A434100397D6B /* ListUpdateState.swift */; };
+		0EDA96DF247A4DAC00397D6B /* UserListTabPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDA96DE247A4DAC00397D6B /* UserListTabPageViewController.swift */; };
 		0EE92ADC2478F08D0046558F /* PaginationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE92ADB2478F08D0046558F /* PaginationResponse.swift */; };
 		0EE92ADE2478F2710046558F /* SearchUserUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE92ADD2478F2710046558F /* SearchUserUseCase.swift */; };
 		0EE92AE02478F2FF0046558F /* SearchUserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EE92ADF2478F2FF0046558F /* SearchUserRepository.swift */; };
@@ -199,7 +200,7 @@
 		0E4E8B462474AEEA00A4B398 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		0EB29E6C2476D95A000BF55B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EB29E6D2476D95A000BF55B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		0EB29E732476DA14000BF55B /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0EB29E732476DA14000BF55B /* UserListContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListContainerViewController.swift; sourceTree = "<group>"; };
 		0EB29E752476DB0A000BF55B /* SearchUserListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserListViewController.swift; sourceTree = "<group>"; };
 		0EB29E772476DB1C000BF55B /* SearchUserListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SearchUserListViewController.storyboard; sourceTree = "<group>"; };
 		0EB29E7A2476DDA1000BF55B /* users.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = users.json; sourceTree = "<group>"; };
@@ -210,6 +211,7 @@
 		0EB29E8F2476EFA6000BF55B /* FavoriteUserListViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = FavoriteUserListViewController.storyboard; sourceTree = "<group>"; };
 		0EB29E912476F39F000BF55B /* FavoriteUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUser.swift; sourceTree = "<group>"; };
 		0EDA96DC247A434100397D6B /* ListUpdateState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListUpdateState.swift; sourceTree = "<group>"; };
+		0EDA96DE247A4DAC00397D6B /* UserListTabPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserListTabPageViewController.swift; sourceTree = "<group>"; };
 		0EE92ADB2478F08D0046558F /* PaginationResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaginationResponse.swift; sourceTree = "<group>"; };
 		0EE92ADD2478F2710046558F /* SearchUserUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserUseCase.swift; sourceTree = "<group>"; };
 		0EE92ADF2478F2FF0046558F /* SearchUserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserRepository.swift; sourceTree = "<group>"; };
@@ -499,11 +501,12 @@
 		0EB29E722476D9F0000BF55B /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				0EB29E732476DA14000BF55B /* ViewController.swift */,
+				0EB29E732476DA14000BF55B /* UserListContainerViewController.swift */,
 				0EB29E752476DB0A000BF55B /* SearchUserListViewController.swift */,
 				0EB29E772476DB1C000BF55B /* SearchUserListViewController.storyboard */,
 				0EB29E8D2476EF95000BF55B /* FavoriteUserListViewController.swift */,
 				0EB29E8F2476EFA6000BF55B /* FavoriteUserListViewController.storyboard */,
+				0EDA96DE247A4DAC00397D6B /* UserListTabPageViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -982,7 +985,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E078A632478008C0000D172 /* UserListCell.swift in Sources */,
-				0EB29E742476DA14000BF55B /* ViewController.swift in Sources */,
+				0EB29E742476DA14000BF55B /* UserListContainerViewController.swift in Sources */,
 				0EFF78DD24791DFB00BE7661 /* FavoriteUserRepository.swift in Sources */,
 				0E078A6824782C820000D172 /* UIImageView+Extensions.swift in Sources */,
 				0EB29E8E2476EF95000BF55B /* FavoriteUserListViewController.swift in Sources */,
@@ -994,6 +997,7 @@
 				0EFF78D4247900AC00BE7661 /* RxSwift+Extensions.swift in Sources */,
 				0EB29E872476E117000BF55B /* User.swift in Sources */,
 				0EDA96DD247A434100397D6B /* ListUpdateState.swift in Sources */,
+				0EDA96DF247A4DAC00397D6B /* UserListTabPageViewController.swift in Sources */,
 				0EB29E6E2476D95A000BF55B /* AppDelegate.swift in Sources */,
 				0EFF78E2247921CD00BE7661 /* UserRealm.swift in Sources */,
 				0EB29E822476DFDD000BF55B /* GitHubUser.swift in Sources */,

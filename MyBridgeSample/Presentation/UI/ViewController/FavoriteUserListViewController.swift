@@ -9,20 +9,25 @@
 import UIKit
 import RxSwift
 
-final class FavoriteUserListViewController: UIViewController {
+final class FavoriteUserListViewController: UIViewController, TabPageContentViewControllerType {
 
     // UIs
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
 
     private lazy var viewModel: FavoriteUserListViewModel = createViewModel()
-    private var users: [User] = []
     private let disposeBag = DisposeBag()
+
+    // MARK: - TabPageContentViewControllerType
+    var tabPageContentScrollView: UIScrollView? {
+        return tableView
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         prepareTableView()
+        prepareTabPage()
         setupObservable()
     }
 }
@@ -31,10 +36,6 @@ final class FavoriteUserListViewController: UIViewController {
 // MARK: - private
 
 extension FavoriteUserListViewController {
-    private func prepareTableView() {
-        tableView.registerNib(UserListCell.self)
-    }
-
     private func createViewModel() -> FavoriteUserListViewModel {
         let realm = try! userRealm()
         let repository = FavoriteUserRepositoryImpl(realm: realm)
@@ -43,6 +44,10 @@ extension FavoriteUserListViewController {
             realm: realm,
             useCase: useCase
         )
+    }
+
+    private func prepareTableView() {
+        tableView.registerNib(UserListCell.self)
     }
 
     private func setupObservable() {

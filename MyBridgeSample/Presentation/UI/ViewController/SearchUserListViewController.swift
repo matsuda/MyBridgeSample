@@ -12,7 +12,7 @@ import RxCocoa
 import RealmSwift
 import APIKit
 
-final class SearchUserListViewController: UIViewController {
+final class SearchUserListViewController: UIViewController, TabPageContentViewControllerType {
 
     // UIs
     @IBOutlet private weak var tableView: UITableView!
@@ -21,10 +21,16 @@ final class SearchUserListViewController: UIViewController {
     private lazy var viewModel: SearchUserListViewModel = createViewModel()
     private let disposeBag = DisposeBag()
 
+    // MARK: - TabPageContentViewControllerType
+    var tabPageContentScrollView: UIScrollView? {
+        return tableView
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         prepareTableView()
+        prepareTabPage()
         setupObservable()
     }
 }
@@ -33,10 +39,6 @@ final class SearchUserListViewController: UIViewController {
 // MARK: - private
 
 extension SearchUserListViewController {
-    private func prepareTableView() {
-        tableView.registerNib(UserListCell.self)
-    }
-
     private func createViewModel() -> SearchUserListViewModel {
         let realm = try! userRealm()
         let repository = SearchUserRepositoryImpl(session: .shared)
@@ -49,6 +51,10 @@ extension SearchUserListViewController {
             didChangeKeyword: searchBar.rx.text.orEmpty.asDriver(),
             useCase: useCase
         )
+    }
+
+    private func prepareTableView() {
+        tableView.registerNib(UserListCell.self)
     }
 
     private func setupObservable() {
