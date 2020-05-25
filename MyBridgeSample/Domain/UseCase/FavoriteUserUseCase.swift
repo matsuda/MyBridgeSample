@@ -13,9 +13,6 @@ import RealmSwift
 // MARK: - FavoriteUserUseCaseImple
 
 protocol FavoriteUserUseCase {
-//    func search(name: String) -> [User]
-//    func add(user: User)
-//    func remove(id: Int)
     func search(name: String) -> Single<[User]>
     func add(user: User) -> Single<Bool>
     func remove(id: Int) -> Single<Bool>
@@ -26,9 +23,6 @@ protocol FavoriteUserUseCase {
 
 protocol FavoriteUserRepository {
     func fetchBy(id: Int) -> User?
-//    func fetchBy(likeName name: String) -> [User]
-//    func add(user: User)
-//    func remove(id: Int)
     func fetchBy(likeName name: String) -> Single<[User]>
     func add(user: User) -> Single<Bool>
     func remove(id: Int) -> Single<Bool>
@@ -43,10 +37,6 @@ final class FavoriteUserUseCaseImpl: FavoriteUserUseCase {
     init(repository: FavoriteUserRepository) {
         self.repository = repository
     }
-
-//    func search(name: String) -> [User] {
-//        repository.fetchBy(likeName: name)
-//    }
 
     func search(name: String) -> Single<[User]> {
         repository.fetchBy(likeName: name)
