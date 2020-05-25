@@ -50,6 +50,9 @@
 		0E4E8B5F2474B71900A4B398 /* RxTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E4E8B452474AEEA00A4B398 /* RxTest.framework */; };
 		0E97DE3C247BC6B800686DB8 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E97DE3B247BC6B800686DB8 /* UIColor+Extensions.swift */; };
 		0E97DE3E247BC6FC00686DB8 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E97DE3D247BC6FC00686DB8 /* UIColor+Extensions.swift */; };
+		0E97DE40247BF1A300686DB8 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E97DE3F247BF1A300686DB8 /* EmptyView.swift */; };
+		0E97DE42247BF1B600686DB8 /* EmptyView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0E97DE41247BF1B600686DB8 /* EmptyView.xib */; };
+		0E97DE44247BF51400686DB8 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E97DE43247BF51400686DB8 /* NibLoadable.swift */; };
 		0EB29E6E2476D95A000BF55B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E6C2476D95A000BF55B /* AppDelegate.swift */; };
 		0EB29E6F2476D95A000BF55B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E6D2476D95A000BF55B /* SceneDelegate.swift */; };
 		0EB29E742476DA14000BF55B /* UserListContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E732476DA14000BF55B /* UserListContainerViewController.swift */; };
@@ -203,6 +206,9 @@
 		0E4E8B462474AEEA00A4B398 /* APIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = APIKit.framework; path = Carthage/Build/iOS/APIKit.framework; sourceTree = "<group>"; };
 		0E97DE3B247BC6B800686DB8 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
 		0E97DE3D247BC6FC00686DB8 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
+		0E97DE3F247BF1A300686DB8 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		0E97DE41247BF1B600686DB8 /* EmptyView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyView.xib; sourceTree = "<group>"; };
+		0E97DE43247BF51400686DB8 /* NibLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
 		0EB29E6C2476D95A000BF55B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EB29E6D2476D95A000BF55B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0EB29E732476DA14000BF55B /* UserListContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListContainerViewController.swift; sourceTree = "<group>"; };
@@ -311,6 +317,7 @@
 				0E078A3C2477FE230000D172 /* Info.plist */,
 				0E078A572477FEC00000D172 /* Reusable.swift */,
 				0E078A592477FEDF0000D172 /* URLResource.swift */,
+				0E97DE43247BF51400686DB8 /* NibLoadable.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -339,6 +346,8 @@
 			children = (
 				0E078A612478008C0000D172 /* UserListCell.swift */,
 				0E078A622478008C0000D172 /* UserListCell.xib */,
+				0E97DE3F247BF1A300686DB8 /* EmptyView.swift */,
+				0E97DE41247BF1B600686DB8 /* EmptyView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -868,6 +877,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E97DE42247BF1B600686DB8 /* EmptyView.xib in Resources */,
 				0EB29E7B2476DDA1000BF55B /* users.json in Resources */,
 				0E078A642478008C0000D172 /* UserListCell.xib in Resources */,
 				0E4E8B192474A2B100A4B398 /* LaunchScreen.storyboard in Resources */,
@@ -963,6 +973,7 @@
 				0E078A5F2477FF6A0000D172 /* UIViewController+Extensions.swift in Sources */,
 				0E97DE3C247BC6B800686DB8 /* UIColor+Extensions.swift in Sources */,
 				0E078A5D2477FF390000D172 /* UITableView+Extensions.swift in Sources */,
+				0E97DE44247BF51400686DB8 /* NibLoadable.swift in Sources */,
 				0E078A582477FEC00000D172 /* Reusable.swift in Sources */,
 				0E078A5A2477FEDF0000D172 /* URLResource.swift in Sources */,
 			);
@@ -1016,6 +1027,7 @@
 				0E97DE3E247BC6FC00686DB8 /* UIColor+Extensions.swift in Sources */,
 				0EFF78D4247900AC00BE7661 /* RxSwift+Extensions.swift in Sources */,
 				0EB29E872476E117000BF55B /* User.swift in Sources */,
+				0E97DE40247BF1A300686DB8 /* EmptyView.swift in Sources */,
 				0EDA96DD247A434100397D6B /* ListUpdateState.swift in Sources */,
 				0EDA96DF247A4DAC00397D6B /* UserListTabPageViewController.swift in Sources */,
 				0EB29E6E2476D95A000BF55B /* AppDelegate.swift in Sources */,

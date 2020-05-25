@@ -17,6 +17,12 @@ final class SearchUserListViewController: UIViewController, TabPageContentViewCo
     // UIs
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
+    private let emptyView: EmptyView = {
+        let view = EmptyView.loadNib()
+        view.text = "検索フォームにユーザ名を入力するとAPIからユーザ一覧を取得します。\n"
+        + "ユーザ一覧からユーザを選択するとお気に入りとして保存されます。"
+        return view
+    }()
 
     private lazy var viewModel: SearchUserListViewModel = createViewModel()
     private let disposeBag = DisposeBag()
@@ -43,6 +49,11 @@ final class SearchUserListViewController: UIViewController, TabPageContentViewCo
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        adjustEmptyView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -81,6 +92,7 @@ extension SearchUserListViewController {
     private func prepareTableView() {
         tableView.registerNib(UserListCell.self)
         tableView.keyboardDismissMode = .onDrag
+        tableView.tableFooterView = emptyView
     }
 
     private func prepareSearchBar() {
@@ -103,6 +115,7 @@ extension SearchUserListViewController {
                     self.tableView.reloadRows(at: modifications, with: .automatic)
                     self.tableView.endUpdates()
                 }
+                self.tableView.tableFooterView = nil
             })
             .disposed(by: disposeBag)
 
@@ -111,6 +124,17 @@ extension SearchUserListViewController {
                 self?.feedbackGenerator.selectionChanged()
             })
             .disposed(by: disposeBag)
+    }
+
+    private func adjustEmptyView() {
+        guard let footer = tableView.tableFooterView else {
+            return
+        }
+        var frame = tableView.frame
+        let inset = tableView.contentInset
+        let searchBarFrame = searchBar.frame
+        frame.size.height -= inset.top + inset.bottom + searchBarFrame.height
+        footer.frame = frame
     }
 }
 

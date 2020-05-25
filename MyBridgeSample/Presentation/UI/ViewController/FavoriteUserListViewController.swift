@@ -14,6 +14,12 @@ final class FavoriteUserListViewController: UIViewController, TabPageContentView
     // UIs
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
+    private let emptyView: EmptyView = {
+        let view = EmptyView.loadNib()
+        view.text = "検索フォームにユーザ名を入力するとお気に入り登録していたユーザを表示します。\n"
+            + "ユーザ一覧からユーザを選択するとお気に入りから削除されます。"
+        return view
+    }()
 
     private lazy var viewModel: FavoriteUserListViewModel = createViewModel()
     private let disposeBag = DisposeBag()
@@ -34,6 +40,11 @@ final class FavoriteUserListViewController: UIViewController, TabPageContentView
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        adjustEmptyView()
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -68,6 +79,7 @@ extension FavoriteUserListViewController {
     private func prepareTableView() {
         tableView.registerNib(UserListCell.self)
         tableView.keyboardDismissMode = .onDrag
+        tableView.tableFooterView = emptyView
     }
 
     private func prepareSearchBar() {
@@ -90,8 +102,20 @@ extension FavoriteUserListViewController {
                     self.tableView.reloadRows(at: modifications, with: .automatic)
                     self.tableView.endUpdates()
                 }
+                self.tableView.tableFooterView = nil
             })
         .disposed(by: disposeBag)
+    }
+
+    private func adjustEmptyView() {
+        guard let footer = tableView.tableFooterView else {
+            return
+        }
+        var frame = tableView.frame
+        let inset = tableView.contentInset
+        let searchBarFrame = searchBar.frame
+        frame.size.height -= inset.top + inset.bottom + searchBarFrame.height
+        footer.frame = frame
     }
 }
 
