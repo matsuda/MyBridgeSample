@@ -21,4 +21,21 @@ A sample application using GitHub API
 1234xxxxxxxxxx7890
 ```
 
-作成しない場合はデフォルトのRate Limit
+作成しない場合はデフォルトのRate Limitの制限となる  
+[Rate Limit参照](#rate-limit)
+
+## Documentation
+
+* [Library](Documentation/Library.md)
+* [Enhancement](Documentation/Enhancement.md)
+
+## GitHub API
+
+### 使用API
+
+* [search-users](https://developer.github.com/v3/search/#search-users)
+
+### Rate Limit
+
+* [Rate limiting](https://developer.github.com/v3/#rate-limiting)
+* [the Search API has custom rate limit rules.](https://developer.github.com/v3/search/#rate-limit)
