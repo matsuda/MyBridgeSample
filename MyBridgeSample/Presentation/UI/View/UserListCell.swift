@@ -46,7 +46,7 @@ extension UserListCell {
         if isFavorite {
             let image = UIImage(systemName: "star.fill")?.withRenderingMode(.alwaysTemplate)
             favoriteButton.setImage(image, for: .normal)
-            favoriteButton.imageView?.tintColor = .systemBlue
+            favoriteButton.imageView?.tintColor = .githubBgColor
         } else {
             let image = UIImage(systemName: "star")?.withRenderingMode(.alwaysTemplate)
             favoriteButton.setImage(image, for: .normal)

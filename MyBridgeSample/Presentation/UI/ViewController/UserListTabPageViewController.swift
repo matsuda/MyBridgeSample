@@ -23,6 +23,7 @@ final class UserListTabPageViewController: TabPageViewController {
         option.tabWidth = view.frame.width / CGFloat(tabItems.count)
         option.fontSize = 17
         option.tabBackgroundColor = UIColor.systemBackground
+        option.currentColor = .githubBgColor
         option.isTranslucent = false
     }
 
