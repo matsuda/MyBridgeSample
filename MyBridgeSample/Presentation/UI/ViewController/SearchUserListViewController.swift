@@ -21,6 +21,12 @@ final class SearchUserListViewController: UIViewController, TabPageContentViewCo
     private lazy var viewModel: SearchUserListViewModel = createViewModel()
     private let disposeBag = DisposeBag()
 
+    private let feedbackGenerator: UISelectionFeedbackGenerator = {
+        let generator = UISelectionFeedbackGenerator()
+        generator.prepare()
+        return generator
+    }()
+
     // MARK: - TabPageContentViewControllerType
     var tabPageContentScrollView: UIScrollView? {
         return tableView
@@ -97,6 +103,12 @@ extension SearchUserListViewController {
                     self.tableView.reloadRows(at: modifications, with: .automatic)
                     self.tableView.endUpdates()
                 }
+            })
+            .disposed(by: disposeBag)
+
+        viewModel.didChangeFavorite
+            .drive(onNext: { [weak self] (_) in
+                self?.feedbackGenerator.selectionChanged()
             })
             .disposed(by: disposeBag)
     }

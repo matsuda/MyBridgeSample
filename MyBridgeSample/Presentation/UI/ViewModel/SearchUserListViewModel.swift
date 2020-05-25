@@ -19,6 +19,8 @@ final class SearchUserListViewModel {
     }
     private let _updateState: PublishRelay<ListUpdateState> = .init()
 
+    let didChangeFavorite: Driver<Bool>
+
     private let useCase: SearchUserUseCase
     private let appStore: ApplicationStore
     private let disposeBag = DisposeBag()
@@ -29,6 +31,9 @@ final class SearchUserListViewModel {
 
         self.useCase = useCase
         self.appStore = appStore
+
+        let _didChangeFavorite = PublishRelay<Bool>()
+        didChangeFavorite = _didChangeFavorite.asDriver(onErrorDriveWith: .empty())
 
         didChangeKeyword.skip(1)
             .debounce(.microseconds(300))
@@ -67,6 +72,7 @@ final class SearchUserListViewModel {
                                                      deletions: [],
                                                      insertiona: [],
                                                      modifications: [IndexPath(row: row, section: section)]))
+                    _didChangeFavorite.accept(isLike)
                 }
             })
             .disposed(by: disposeBag)
