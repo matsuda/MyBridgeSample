@@ -61,6 +61,7 @@
 		0E97DE53247C020D00686DB8 /* SearchUserUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E97DE52247C020D00686DB8 /* SearchUserUseCaseTest.swift */; };
 		0E97DE59247C100E00686DB8 /* XCTest+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E97DE58247C100D00686DB8 /* XCTest+Extensions.swift */; };
 		0E97DE5B247C104F00686DB8 /* FavoriteUserUseCaseTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E97DE5A247C104F00686DB8 /* FavoriteUserUseCaseTest.swift */; };
+		0EB22A11247C9FC20037C046 /* FavoriteUserRepositoryTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB22A10247C9FC20037C046 /* FavoriteUserRepositoryTest.swift */; };
 		0EB29E6E2476D95A000BF55B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E6C2476D95A000BF55B /* AppDelegate.swift */; };
 		0EB29E6F2476D95A000BF55B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E6D2476D95A000BF55B /* SceneDelegate.swift */; };
 		0EB29E742476DA14000BF55B /* UserListContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EB29E732476DA14000BF55B /* UserListContainerViewController.swift */; };
@@ -221,6 +222,7 @@
 		0E97DE52247C020D00686DB8 /* SearchUserUseCaseTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserUseCaseTest.swift; sourceTree = "<group>"; };
 		0E97DE58247C100D00686DB8 /* XCTest+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "XCTest+Extensions.swift"; sourceTree = "<group>"; };
 		0E97DE5A247C104F00686DB8 /* FavoriteUserUseCaseTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FavoriteUserUseCaseTest.swift; sourceTree = "<group>"; };
+		0EB22A10247C9FC20037C046 /* FavoriteUserRepositoryTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteUserRepositoryTest.swift; sourceTree = "<group>"; };
 		0EB29E6C2476D95A000BF55B /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EB29E6D2476D95A000BF55B /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0EB29E732476DA14000BF55B /* UserListContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserListContainerViewController.swift; sourceTree = "<group>"; };
@@ -474,6 +476,7 @@
 			children = (
 				0E97DE58247C100D00686DB8 /* XCTest+Extensions.swift */,
 				0E97DE48247BFF2100686DB8 /* Mock */,
+				0EB22A0F247C9FAB0037C046 /* Repository */,
 				0E97DE51247C01D600686DB8 /* UseCase */,
 				0E4E8B232474A2B100A4B398 /* MyBridgeSampleTests.swift */,
 				0E4E8B252474A2B100A4B398 /* Info.plist */,
@@ -540,6 +543,14 @@
 				0E97DE5A247C104F00686DB8 /* FavoriteUserUseCaseTest.swift */,
 			);
 			path = UseCase;
+			sourceTree = "<group>";
+		};
+		0EB22A0F247C9FAB0037C046 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				0EB22A10247C9FC20037C046 /* FavoriteUserRepositoryTest.swift */,
+			);
+			path = Repository;
 			sourceTree = "<group>";
 		};
 		0EB29E6A2476D7BC000BF55B /* Presentation */ = {
@@ -1086,6 +1097,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0EB22A11247C9FC20037C046 /* FavoriteUserRepositoryTest.swift in Sources */,
 				0E97DE59247C100E00686DB8 /* XCTest+Extensions.swift in Sources */,
 				0E97DE50247C001500686DB8 /* SearchUserRepositoryMock.swift in Sources */,
 				0E4E8B242474A2B100A4B398 /* MyBridgeSampleTests.swift in Sources */,
