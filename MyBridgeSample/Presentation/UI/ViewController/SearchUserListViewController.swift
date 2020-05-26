@@ -124,6 +124,13 @@ extension SearchUserListViewController {
                 self?.feedbackGenerator.selectionChanged()
             })
             .disposed(by: disposeBag)
+
+        Driver.merge(searchBar.rx.searchButtonClicked.asDriver(),
+                     searchBar.rx.cancelButtonClicked.asDriver())
+            .drive(onNext: { [unowned self] (_) in
+                self.searchBar.resignFirstResponder()
+            })
+            .disposed(by: disposeBag)
     }
 
     private func adjustEmptyView() {

@@ -8,6 +8,7 @@
 
 import UIKit
 import RxSwift
+import RxCocoa
 
 final class FavoriteUserListViewController: UIViewController, TabPageContentViewControllerType {
 
@@ -104,7 +105,14 @@ extension FavoriteUserListViewController {
                 }
                 self.tableView.tableFooterView = nil
             })
-        .disposed(by: disposeBag)
+            .disposed(by: disposeBag)
+
+        Driver.merge(searchBar.rx.searchButtonClicked.asDriver(),
+                     searchBar.rx.cancelButtonClicked.asDriver())
+            .drive(onNext: { [unowned self] (_) in
+                self.searchBar.resignFirstResponder()
+            })
+            .disposed(by: disposeBag)
     }
 
     private func adjustEmptyView() {
