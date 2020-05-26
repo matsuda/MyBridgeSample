@@ -29,6 +29,7 @@ A sample application using GitHub API
 ## Documentation
 
 * [Library](Documentation/Library.md)
+* [Architecture](Documentation/Architecture.md)
 * [Enhancement](Documentation/Enhancement.md)
 
 ## GitHub API
