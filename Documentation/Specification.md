@@ -10,7 +10,7 @@
 
 |API初回表示|APIユーザ一覧|
 |:-:|:-:|
-|![API-initial](images/1.API-initial.png "API初回表示")|![API-user-list](images/2.API-user-list.png "APIユーザ一覧")|
+|![API-initial](https://github.com/matsuda/MyBridgeSample/blob/master/Documentation/Images/1.API-initial.png?raw=true "API初回表示")|![API-user-list](https://github.com/matsuda/MyBridgeSample/blob/master/Documentation/Images/2.API-user-list.png?raw=true "APIユーザ一覧")|
 
 * 初回表示にユーザに機能の説明を表示する
 * 検索フォームを表示し、キーワードを入力するとGitHubのSearch APIをインクリメンタルサーチをしてユーザ一覧を表示する
@@ -23,7 +23,7 @@
 
 |お気に入り初回表示|お気に入りユーザ一覧|
 |:-:|:-:|
-|![Local-initial](images/3.Local-initial.png "お気に入り初回表示")|![Locla-user-list](images/4.Locla-user-list.png "お気に入りユーザ一覧")|
+|![Local-initial](https://github.com/matsuda/MyBridgeSample/blob/master/Documentation/Images/3.Local-initial.png?raw=true "お気に入り初回表示")|![Locla-user-list](https://github.com/matsuda/MyBridgeSample/blob/master/Documentation/Images/4.Locla-user-list.png?raw=true "お気に入りユーザ一覧")|
 
 * 初回表示にユーザに機能の説明を表示する
 * 検索フォームを表示し、キーワードを入力するとローカルに保存してあるお気に入りデータからインクリメンタルサーチをしてユーザ一覧を表示する

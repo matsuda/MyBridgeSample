@@ -7,7 +7,7 @@ MVVM + 簡易Clean Architecutreを採用
 * インターフェース（Protocol）を定義し各レイヤーの抽象化を高め、各レイヤー間を疎結合にする。
 * テスト時にはモックで差し替え。
 
-![MVVM+ MVVM_CleanArchitecture](images/MVVM_CleanArchitecture.pdf)
+![MVVM+MVVM_CleanArchitecture](https://github.com/matsuda/MyBridgeSample/blob/master/Documentation/Images/MVVM_CleanArchitecture.png?raw=true)
 
 
 ### 役割
