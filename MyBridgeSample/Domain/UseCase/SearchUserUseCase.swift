@@ -15,7 +15,6 @@ import RxSwift
 
 protocol SearchUserUseCase {
     func search(keyword: String, page: Int?) -> Single<[User]>
-//    func like(user: User) -> Single<User?>
     func like(user: User) -> Single<Bool>
 }
 
