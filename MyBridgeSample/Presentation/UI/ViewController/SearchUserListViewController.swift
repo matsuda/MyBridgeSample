@@ -101,7 +101,7 @@ extension SearchUserListViewController {
 
     private func setupObservable() {
         viewModel.updateState
-            .subscribe(onNext: { [weak self] (state) in
+            .drive(onNext: { [weak self] (state) in
                 guard let self = self else { return }
                 switch state {
                 case .error(_):

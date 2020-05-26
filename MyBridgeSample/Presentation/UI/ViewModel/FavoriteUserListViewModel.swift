@@ -14,8 +14,8 @@ final class FavoriteUserListViewModel {
     private(set) var nameInitials: [String] = []
     private(set) var userList: [String: [User]] = [:]
 
-    var updateState: Observable<ListUpdateState> {
-        _updateState.asObservable()
+    var updateState: Driver<ListUpdateState> {
+        _updateState.asDriver(onErrorDriveWith: .empty())
     }
     private let _updateState: PublishRelay<ListUpdateState> = .init()
 
