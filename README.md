@@ -2,6 +2,8 @@
 
 A sample application using GitHub API
 
+<img src="Documentation/Images/sample.gif" width=300 />
+
 ## Environment
 
 * Xcode 11.4.1
