@@ -14,7 +14,15 @@ import RxSwift
 // MARK: - SearchUserUseCase
 
 protocol SearchUserUseCase {
+    /// 指定されたキーワードで検索します。
+    /// - parameter keyword: 検索キーワード
+    /// - parameter page: ページ（未使用）
+    /// - returns: ユーザ一覧の`Single`
     func search(keyword: String, page: Int?) -> Single<[User]>
+
+    /// 指定されたユーザをお気に入りに追加、削除します。
+    /// - parameter user: ユーザ
+    /// - returns: お気に入りに追加 or お気に入りから削除
     func like(user: User) -> Single<Bool>
 }
 
@@ -22,6 +30,10 @@ protocol SearchUserUseCase {
 // MARK: - SearchUserRepository
 
 protocol SearchUserRepository {
+    /// 指定されたキーワードで検索します。
+    /// - parameter keyword: 検索キーワード
+    /// - parameter page: ページ（未使用）
+    /// - returns: ユーザ一覧の`Single`
     func search(keyword: String, page: Int?) -> Single<[GitHubUser]>
 }
 

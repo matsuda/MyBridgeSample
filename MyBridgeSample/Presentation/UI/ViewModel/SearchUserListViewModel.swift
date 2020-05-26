@@ -11,14 +11,18 @@ import RxSwift
 import RxCocoa
 
 final class SearchUserListViewModel {
+    /// ユーザ名のイニシャル
     private(set) var nameInitials: [String] = []
+    /// イニシャル毎のユーザ一覧
     private(set) var userList: [String: [User]] = [:]
 
+    /// ユーザ一覧取得結果
     var updateState: Driver<ListUpdateState> {
         _updateState.asDriver(onErrorDriveWith: .empty())
     }
     private let _updateState: PublishRelay<ListUpdateState> = .init()
 
+    /// お気に入り状態の変更
     let didChangeFavorite: Driver<Bool>
 
     private let useCase: SearchUserUseCase
@@ -78,6 +82,8 @@ final class SearchUserListViewModel {
             .disposed(by: disposeBag)
     }
 
+    /// 指定されたユーザをお気に入りに追加、削除します。
+    /// - parameter indexPath: 選択されたユーザの`IndexPath`
     func like(at indexPath: IndexPath) {
         let ini = nameInitials[indexPath.section]
         let user = userList[ini]![indexPath.row]

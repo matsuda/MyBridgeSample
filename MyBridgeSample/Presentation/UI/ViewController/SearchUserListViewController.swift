@@ -15,8 +15,10 @@ import APIKit
 final class SearchUserListViewController: UIViewController, TabPageContentViewControllerType {
 
     // UIs
+
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
+    // ユーザに説明するためのview。初回だけ表示
     private let emptyView: EmptyView = {
         let view = EmptyView.loadNib()
         view.text = "検索フォームにユーザ名を入力するとAPIからユーザ一覧を取得します。\n"
@@ -27,6 +29,7 @@ final class SearchUserListViewController: UIViewController, TabPageContentViewCo
     private lazy var viewModel: SearchUserListViewModel = createViewModel()
     private let disposeBag = DisposeBag()
 
+    // お気に入り状態が変更されたのを通知するHaptic Feedback
     private let feedbackGenerator: UISelectionFeedbackGenerator = {
         let generator = UISelectionFeedbackGenerator()
         generator.prepare()
@@ -37,6 +40,9 @@ final class SearchUserListViewController: UIViewController, TabPageContentViewCo
     var tabPageContentScrollView: UIScrollView? {
         return tableView
     }
+
+
+    // Life cycles
 
     override func viewDidLoad() {
         super.viewDidLoad()

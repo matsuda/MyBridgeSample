@@ -11,9 +11,12 @@ import RxSwift
 import RxCocoa
 
 final class FavoriteUserListViewModel {
+    /// ユーザ名のイニシャル
     private(set) var nameInitials: [String] = []
+    /// イニシャル毎のユーザ一覧
     private(set) var userList: [String: [User]] = [:]
 
+    /// ユーザ一覧取得結果
     var updateState: Driver<ListUpdateState> {
         _updateState.asDriver(onErrorDriveWith: .empty())
     }
@@ -21,6 +24,7 @@ final class FavoriteUserListViewModel {
 
     private let useCase: FavoriteUserUseCase
     private let appStore: ApplicationStore
+    /// 検索キーワード（名前）。再検索で利用
     private var keyword: String?
     private let disposeBag = DisposeBag()
 
@@ -83,6 +87,8 @@ final class FavoriteUserListViewModel {
             .disposed(by: disposeBag)
     }
 
+    /// 指定されたユーザをお気に入りから削除します。
+    /// - parameter indexPath: 選択されたユーザの`IndexPath`
     func like(at indexPath: IndexPath) {
         let ini = nameInitials[indexPath.section]
         let user = userList[ini]![indexPath.row]

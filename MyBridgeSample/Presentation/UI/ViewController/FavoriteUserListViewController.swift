@@ -13,8 +13,10 @@ import RxCocoa
 final class FavoriteUserListViewController: UIViewController, TabPageContentViewControllerType {
 
     // UIs
+
     @IBOutlet private weak var tableView: UITableView!
     @IBOutlet private weak var searchBar: UISearchBar!
+    // ユーザに説明するためのview。初回だけ表示
     private let emptyView: EmptyView = {
         let view = EmptyView.loadNib()
         view.text = "検索フォームにユーザ名を入力するとお気に入り登録していたユーザを表示します。\n"
@@ -29,6 +31,9 @@ final class FavoriteUserListViewController: UIViewController, TabPageContentView
     var tabPageContentScrollView: UIScrollView? {
         return tableView
     }
+
+
+    // Life cycles
 
     override func viewDidLoad() {
         super.viewDidLoad()
