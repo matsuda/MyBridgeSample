@@ -83,7 +83,8 @@ final class SearchUserListViewController: UIViewController, TabPageContentViewCo
 extension SearchUserListViewController {
     private func createViewModel() -> SearchUserListViewModel {
         let realm = try! userRealm()
-        let repository = SearchUserRepositoryImpl(session: .shared)
+        let webAPI = Session.shared
+        let repository = SearchUserRepositoryImpl(webAPI: webAPI)
         let favoriteRepository = FavoriteUserRepositoryImpl(realm: realm)
         let useCase = SearchUserUseCaseImpl(
             repository: repository,

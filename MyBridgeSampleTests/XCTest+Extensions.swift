@@ -50,6 +50,7 @@ extension XCTestCase {
             [748, "tom", "https://avatars1.githubusercontent.com/u/748?v=4"], // [0]
             [3192, "tomstuart", "https://avatars2.githubusercontent.com/u/3192?v=4"], // [27]
             [1, "mojombo", "https://avatars0.githubusercontent.com/u/1?v=4"], // [2]
+            [945979, "dribnet", "https://avatars3.githubusercontent.com/u/945979?v=4"], // [21]
         ]
         try! realm.write {
             data.forEach { (d) in

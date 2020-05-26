@@ -7,26 +7,29 @@
 //
 
 import Foundation
-import API
-import APIKit
 import RxSwift
+import API
+
+// MARK: - WebAPI
+
+protocol WebAPIProtocol {
+    func search(keyword: String, page: Int?) -> Single<[API.User]>
+}
+
 
 final class SearchUserRepositoryImpl: SearchUserRepository {
-    let session: Session
+    let webAPI: WebAPIProtocol
 
-    init(session: Session) {
-        self.session = session
+    init(webAPI: WebAPIProtocol) {
+        self.webAPI = webAPI
     }
 
     func search(keyword: String, page: Int? = nil) -> Single<[GitHubUser]> {
-        let request = SearchUserRequest(q: keyword, page: page)
-        return session.response(request: request)
-            .map({ searchUserResponse in
-                searchUserResponse.element.users
-                    .sorted(by: { (a, b) -> Bool in
-                        a.login.lowercased() < b.login.lowercased()
-                    })
+        return webAPI.search(keyword: keyword, page: page)
+            .map({ users in
+                users
                     .map(GitHubUser.init(user:))
+                    .sorted(by: { $0.login.lowercased() < $1.login.lowercased() })
             })
     }
 }
@@ -39,31 +42,3 @@ extension GitHubUser {
         self.init(id: user.id, login: user.login, avatarUrl: user.avatarUrl)
     }
 }
-
-
-#if DEBUG
-final class SearchUserRepositoryStub: SearchUserRepository {
-    func search(keyword: String, page: Int?) -> Single<[GitHubUser]> {
-        Single<[GitHubUser]>.create { (observer) -> Disposable in
-            if let users = self.loadData()?.users {
-                observer(.success(users))
-            } else {
-                observer(.success([]))
-            }
-            return Disposables.create()
-        }
-    }
-
-    private func loadData() -> GitHubUserList? {
-        guard let path = Bundle.main.path(forResource: "users", ofType: "json") else {
-            return nil
-        }
-        let url = URL(fileURLWithPath: path)
-        guard let data = try? Data(contentsOf: url) else { return nil}
-        guard let userList = try? JSONDecoder().decode(GitHubUserList.self, from: data) else {
-            return nil
-        }
-        return userList
-    }
-}
-#endif
